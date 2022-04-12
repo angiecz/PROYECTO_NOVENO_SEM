@@ -10,19 +10,7 @@
      <!-- <link href="http://localhost/PROYECTO_NOVENO_SEM/CSS/RecuperarContra.css" rel="stylesheet" type="text/css">  -->
         <title>Recuperación de contraseña</title>
 </head>
-
 <body>
-<!--
-<div class="wrapper">
-    <form action="UsuarioControl.php" method="GET" class="form-signin">
-      <h2 class="form-signin-heading">Ingresa el correo electrónico</h2>
-      <input type="hidden" name="action" value="recuperar"> 
-      <input type="email" name="emaila" placeholder="Email Address" class="form-control" required /> 
-      <input type="submit" class="btn btn-lg btn-primary btn-block" ></input>  
-    </form>
-    
-  </div>
-  !-->
   <div class="row">
     <div class="col-md-6 col-md-offset-3">
         <form id="msform">

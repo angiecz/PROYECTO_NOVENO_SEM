@@ -2,21 +2,15 @@
 require '../Controlador/InicioControlador.php';
 $is= new InicioControlador();
 ?>
-
 <!DOCTYPE html>
 <html lang="en">
     <head>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
         <!-- ===== CSS ===== -->
         <link rel="stylesheet" href="../CSS/Header.css">
-        
         <title>MACARENA.NET-INICIO</title>
-       
-
-       
-    </head>
+       </head>
     <body id="body-pd">
     
         <div class="l-navbar" id="navbar">
@@ -35,18 +29,7 @@ $is= new InicioControlador();
                             <ion-icon name="chatbubbles-outline" class="nav__icon"></ion-icon>
                             <span class="nav__name">Login</span>
                         </a>
-
-                    
-                        <!--<a href="http://localhost/PROYECTO_NOVENO_SEM/Controlador/UsuarioControl.php?action=insert" class="nav__link">
-                            <ion-icon name="settings-outline" class="nav__icon"></ion-icon>
-                            <span class="nav__name">Registrese</span>
-                        </a>
--->
-                      <!--  <a href="http://localhost/PROYECTO_NOVENO_SEM/Controlador/UsuarioControl.php?action=usuario" class="nav__link">
-                            <ion-icon name="chatbubbles-outline" class="nav__icon"></ion-icon> 
-                            <span class="nav__name">Usuario</span> -->
-                           
-                            <?php 
+                           <?php 
                             try {
                                 if(empty($_SESSION['rol'])){
                                     echo '<script language="javascript">alert("No recibirá mayor opción debido a no estar logueado, por favor dirígase al login.");</script>';
@@ -101,12 +84,9 @@ function colorLink(){
   this.classList.add('active')
 }
 linkColor.forEach(l=> l.addEventListener('click', colorLink))
-
-
 /*===== COLLAPSE MENU  =====*/ 
 const linkCollapse = document.getElementsByClassName('collapse__link')
 var i
-
 for(i=0;i<linkCollapse.length;i++){
   linkCollapse[i].addEventListener('click', function(){
     const collapseMenu = this.nextElementSibling
@@ -117,17 +97,11 @@ for(i=0;i<linkCollapse.length;i++){
   })
 }
 </script>
-
-
         <!-- ===== IONICONS ===== -->
         <script src="https://unpkg.com/ionicons@5.1.2/dist/ionicons.js"></script>
-        
         <!-- ===== MAIN JS ===== -->
         <script src="assets/js/main.js"></script>
-
-  
-      </script>
-      
+</script>  
       <div align="center"><image src = "../Imagenes/FONDO.gif" >  </div>
 
 </body>

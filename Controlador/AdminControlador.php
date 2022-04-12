@@ -75,12 +75,7 @@ class AdminControlador extends Admin{
 
 }
 }
-
-  
-  
-
-
-  if(isset($_SESSION['rol']) && $_SESSION['rol']!='Admin'){
+ if(isset($_SESSION['rol']) && $_SESSION['rol']!='Admin'){
    
       echo "<script>
       alert('No tiene permisos en este módulo');
