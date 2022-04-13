@@ -25,9 +25,21 @@ class UsuarioControl extends Usuario{
     {
         require '../Vista/Usuario/login.php';
     }
+    public function LoginViewCuestionario()
+    {
+        require '../Vista/Usuario/cuestionario.php';
+    }
+    public function LoginViewResultados()
+    {
+        require '../Vista/Usuario/revision.php';
+    }
     public function LoginViewOlvidar()
     {
         require '../Vista/Usuario/recuperar.php';
+    }
+    public function LoginViewPlaneacion()
+    {
+        require '../Vista/Usuario/planeacion.php';
     }
     
     public function InsertViewUsu()
@@ -237,6 +249,21 @@ if(isset($_GET['action']) && $_GET['action']=='reestablecer'){
 if(isset($_GET['action']) && $_GET['action']=='contrasena'){
     $instanciacontrolador= new UsuarioControl();
    $instanciacontrolador->NuevaContrasena();
+}
+if(isset($_GET['action']) && $_GET['action']=='valorar'){
+    $instanciacontrolador= new UsuarioControl();
+    $instanciacontrolador->LoginViewCuestionario();
+  
+}
+if(isset($_GET['action']) && $_GET['action']=='revisar'){
+    $instanciacontrolador= new UsuarioControl();
+    $instanciacontrolador->LoginViewResultados();
+  
+}
+if(isset($_GET['action']) && $_GET['action']=='planeacion'){
+    $instanciacontrolador= new UsuarioControl();
+    $instanciacontrolador->LoginViewPlaneacion();
+  
 }
 
 ?>

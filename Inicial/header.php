@@ -38,8 +38,29 @@ $is= new InicioControlador();
                                 else if($_SESSION['rol']=='Admin') { ?>
                                 <a href="http://localhost/PROYECTO_NOVENO_SEM/Controlador/AdminControlador.php?action=insert" class="nav__link">
                             <ion-icon name="settings-outline" class="nav__icon"></ion-icon>
-                            <span class="nav__name">Registrese</span>
+                            <span class="nav__name">Registrar usuario</span>
                         </a>
+                                  
+                          <?php }} catch (Exception $e) {
+                        
+                              
+                          
+                          } ?>
+                          <?php 
+                            try {
+                                if(empty($_SESSION['rol'])){
+                                    echo '<script language="javascript">alert("No recibirá mayor opción debido a no estar logueado, por favor dirígase al login.");</script>';
+                                    
+                                 } 
+                                else if($_SESSION['rol']=='Usuario') { ?>
+                                <a href="http://localhost/PROYECTO_NOVENO_SEM/Controlador/UsuarioControl.php?action=valorar" class="nav__link">
+                            <ion-icon name="settings-outline" class="nav__icon"></ion-icon>
+                            <span class="nav__name">Hardening</span>
+                        </a>
+                        <a href="http://localhost/PROYECTO_NOVENO_SEM/Controlador/UsuarioControl.php?action=planeacion" class="nav__link">
+                            <ion-icon name="settings-outline" class="nav__icon"></ion-icon>
+                            <span class="nav__name">Planeación E</span>
+                        </a>    
                           <?php }} catch (Exception $e) {
                         
                               
