@@ -27,6 +27,7 @@ class AdminControlador extends Admin{
     {
         require '../Vista/Admin/insertar.php';
     }
+    
 
     public function VerifyLogin($nombre,$password){
         $this->nombre=$nombre;

@@ -70,9 +70,17 @@ class UsuarioControl extends Usuario{
         </head>
         <body>
             <h1>Macarena.net</h1>
-            <div style="text-align:center; background-color:#A2DEC7">
-                <p>Restablecer contrasena</p>
+            <div style="text-align:center; background-color:#FAFAFA">
+                <h3>Restablecer contraseña</h3>
+                </div>
+                <div style="text-align:center; background-color:#FAFAFA">
+                <p>Hola! Este es tu token de confirmación de contraseña, por favor ingresa al link y sigue con el proceso</p>
+                <img src="https://cdn-icons-png.flaticon.com/512/261/261036.png" width="70px" height="70px">
+                </div>
+                <div style="text-align:center; background-color:#7DF1C8 ">
                 <h3>'.$codigo.'</h3>
+                </div>
+                <div style="text-align:center; background-color:#FAFAFA">
                 <p> <a 
                     href="http://localhost/PROYECTO_NOVENO_SEM/Vista/Usuario/restablecer.php?emaila='.$emaila.'&token='.$token.'"> 
                     para restablecer da click aqui </a> </p>
@@ -162,11 +170,10 @@ class UsuarioControl extends Usuario{
             </head>
             <body>
                 <h1>Macarena.net</h1>
-                <div style="text-align:center; background-color:#DCBCB5">
-                    <p>Contraseña actualizada</p>
-                    
+                <div style="text-align:center; background-color:#FAFAFA">
+                    <h2>Contraseña actualizada</h2>
                     <p>¡Hola!, hemos aceptado el cambio de tu contraseña correctamente, bienvenido nuevamente!</p>
-                    <img src="https://cutewallpaper.org/24/password-icon-png/password-icon-png-images-free-transparent-password-icon-download-kindpng.png">
+                    <img src="https://cdn-icons-png.flaticon.com/512/637/637546.png" width="70px" height="70px">
                     <p> <small> Si usted no cambió de contraseña por favor comuníquese con el administrador</small> </p>
                 </div>
             </body>

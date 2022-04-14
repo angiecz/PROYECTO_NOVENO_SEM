@@ -33,5 +33,6 @@ protected function BuscarUsuarioForName(){
     return $objetoconsulta;
     
 }
+
 }
 ?>
