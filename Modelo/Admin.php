@@ -34,5 +34,25 @@ protected function BuscarUsuarioForName(){
     
 }
 
+protected function BuscarContraForEmailName($name, $email){
+    $ic=new Conexion();
+    echo "<script>console.log('Console: " . $name . $email ."' );</script>";
+    $sql="SELECT * FROM usuarios WHERE nombre_usuario='$name' and email = '$email'";
+    $consulta=$ic->db->prepare($sql);
+    $consulta->execute();
+    $objetoconsulta=$consulta->fetchAll(PDO::FETCH_OBJ);
+    return $objetoconsulta;
+}
+
+protected function ChangePasswordBD($name, $email, $newpassword){
+    $ic=new Conexion();
+    echo "<script>console.log('Console: " . $name . $email ."' );</script>";
+    $sql="UPDATE usuarios SET contrasena = '$newpassword' WHERE nombre_usuario='$name' and email = '$email'";
+    $actualizar=$ic->db->prepare($sql);
+    $actualizar->execute();
+    $objetoconsulta=$actualizar->fetchAll(PDO::FETCH_OBJ);
+    return $objetoconsulta;
+}
+
 }
 ?>

@@ -36,8 +36,8 @@ class AdminControlador extends Admin{
         $usuarioinformacion=$this->BuscarUsuarioForName();
         foreach($usuarioinformacion as $usuario){}
            if(password_verify($password,$usuario->contrasena)){
-            
-               $_SESSION['nombre']=$usuario->nombre_usuario;
+            $_SESSION
+               ['nombre']=$usuario->nombre_usuario;
                $_SESSION['email']=$usuario->email;
                $_SESSION['rol']=$usuario->rol;
 

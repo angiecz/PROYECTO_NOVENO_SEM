@@ -210,8 +210,11 @@ class UsuarioControl extends Usuario{
             </script>";
         }
     }
-   
-
+    public function ChangePassword()
+    {
+        require '../Vista/Usuario/ChangePassword.php';
+    }
+    
    public function Salir(){
     session_destroy();
     $this->RedireccionarAlLogin();
@@ -224,7 +227,6 @@ if(isset($_GET['action']) && $_GET['action']=='login'){
     $instanciacontrolador->LoginView();
 }
 
-
 if(isset($_GET['action']) && $_GET['action']=='usuario'){
     $instanciacontrolador= new UsuarioControl();
     $instanciacontrolador->InsertViewUsu();
@@ -232,30 +234,32 @@ if(isset($_GET['action']) && $_GET['action']=='usuario'){
 
 if(isset($_GET['action']) && $_GET['action']=='logout'){
     $instanciacontrolador= new UsuarioControl();
-    $instanciacontrolador->Salir();
-  
+    $instanciacontrolador->Salir();  
 }
+
 if(isset($_GET['action']) && $_GET['action']=='olvidar'){
     $instanciacontrolador= new UsuarioControl();
-    $instanciacontrolador->LoginViewOlvidar();
-  
+    $instanciacontrolador->LoginViewOlvidar();  
 }
+
 if(isset($_GET['action']) && $_GET['action']=='recuperar'){
     $instanciacontrolador= new UsuarioControl();
     $instanciacontrolador->Correo();
-    
-  
 }
+
 if(isset($_GET['action']) && $_GET['action']=='reestablecer'){
-    $instanciacontrolador= new UsuarioControl();
-  
+    $instanciacontrolador= new UsuarioControl();  
     $instanciacontrolador->RestablecerContraseña();
-    
-  
 }
+
 if(isset($_GET['action']) && $_GET['action']=='contrasena'){
     $instanciacontrolador= new UsuarioControl();
-   $instanciacontrolador->NuevaContrasena();
+   $instanciacontrolador->NuevaContrasena(); 
+}
+
+if(isset($_GET['action']) && $_GET['action']=='changepassword'){
+    $instanciacontrolador = new UsuarioControl();
+    $instanciacontrolador -> ChangePassword();
 }
 if(isset($_GET['action']) && $_GET['action']=='valorar'){
     $instanciacontrolador= new UsuarioControl();

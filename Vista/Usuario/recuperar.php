@@ -4,7 +4,7 @@
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <meta http-equiv="X-UA-Compatible" content="ie=edge">
-      <link rel="stylesheet" href="../CSS/RecuperarContra.css"> 
+        <link rel="stylesheet" href="../CSS/RecuperarContra.css"> 
       
 
      <!-- <link href="http://localhost/PROYECTO_NOVENO_SEM/CSS/RecuperarContra.css" rel="stylesheet" type="text/css">  -->

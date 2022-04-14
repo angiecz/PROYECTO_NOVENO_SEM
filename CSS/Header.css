@@ -85,6 +85,10 @@ a{
   font-weight: 600;
 }
 
+.nav__list__under{
+  
+}
+
 .nav__link{
   display: grid;
   grid-template-columns: max-content max-content;

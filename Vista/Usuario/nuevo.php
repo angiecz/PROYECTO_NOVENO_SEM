@@ -29,7 +29,7 @@ $email=$_GET['emaila'];
             <!-- fieldsets -->
             <fieldset>
                 <h2 class="fs-title">Nueva contraseña</h2>
-                <h3 class="fs-subtitle">Hola!, ya puedes escrribir tu nueva contraseña</h3>
+                <h3 class="fs-subtitle">Hola!, ya puedes escribir tu nueva contraseña</h3>
                
                 <input type="hidden" name="action" value="contrasena"> 
                 <span  class="fs-subtitle1" id="Mensaje">Aquí mostraremos la fortaleza generada por tu contraseña</span>
