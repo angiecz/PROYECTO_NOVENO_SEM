@@ -38,7 +38,7 @@ $email=$_GET['emaila'];
             <!-- fieldsets -->
             <fieldset>
                 <h2 class="fs-title">Nueva contraseña</h2>
-                <h3 class="fs-subtitle">Hola!, ya puedes escrribir tu nueva contraseña</h3>
+                <h3 class="fs-subtitle">Hola!, ya puedes escribir tu nueva contraseña</h3>
                
                 <input type="hidden" name="action" value="contrasena"> 
                 <input type="password" name="contra1" placeholder="Ingrese su nueva contraseña" class="form-control" >
