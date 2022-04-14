@@ -11,51 +11,37 @@ require '../PHPMailer/SMTP.php';
 $ics= new InicioControlador();
 
 
-
-
-
 class UsuarioControl extends Usuario{
     
-   /* public function RedireccionarRolAdmin()
-    {
-    
-       
-       header("location: AdminControlador.php?action=admin");
-    }*/
-    /*public function RedireccionarRolUsuario()
-    {
-    
-       
-       header("location: Usuariocontrol.php?action=usuario");
-    }
-    public function RedireccionarRolInvitado()
-    {
-    
-       
-       header("location: InvitadoControlador.php?action=invitado");
-    }*/
     public function RedireccionarAlLogin()
     {
         echo "<script>
         alert('Gracias por utilizar nuestros servicios.');
         window.location= 'UsuarioControl.php?action=login'
     </script>";
-       
-      
     }
 
      public function LoginView()
     {
         require '../Vista/Usuario/login.php';
     }
+    public function LoginViewCuestionario()
+    {
+        require '../Vista/Usuario/cuestionario.php';
+    }
+    public function LoginViewResultados()
+    {
+        require '../Vista/Usuario/revision.php';
+    }
     public function LoginViewOlvidar()
     {
         require '../Vista/Usuario/recuperar.php';
     }
+    public function LoginViewPlaneacion()
+    {
+        require '../Vista/Usuario/planeacion.php';
+    }
     
-        
-    
- 
     public function InsertViewUsu()
     {
         require '../Vista/Usuario/usuario.php';
@@ -63,9 +49,7 @@ class UsuarioControl extends Usuario{
     
     public function Correo(){
        
-        //include '../Vista/Usuario/recuperar.php';
-       
-        
+        //include '../Vista/Usuario/recuperar.php'; 
         $ic=new Conexion();
         
         $codigo=rand(1000,9999);
@@ -85,8 +69,8 @@ class UsuarioControl extends Usuario{
           <title>Restablecer</title>
         </head>
         <body>
-            <h1>Empresa X</h1>
-            <div style="text-align:center; background-color:#ccc">
+            <h1>Macarena.net</h1>
+            <div style="text-align:center; background-color:#A2DEC7">
                 <p>Restablecer contrasena</p>
                 <h3>'.$codigo.'</h3>
                 <p> <a 
@@ -97,9 +81,7 @@ class UsuarioControl extends Usuario{
         </body>
         </html>
         '; 
-        
-        
-       
+          
         $mail = new PHPMailer(true);
         try {
             $mail->SMTPDebug = 0;
@@ -140,12 +122,10 @@ class UsuarioControl extends Usuario{
     
          $correcto=false;
          if($objetoc>0){
-            $correcto=true;
-            
+            $correcto=true;   
          }
          else{
-            $correcto=false;
-            
+            $correcto=false; 
          }
          if($correcto==true){
             require '../Vista/Usuario/nuevo.php';
@@ -160,7 +140,7 @@ class UsuarioControl extends Usuario{
          
     }
     public function NuevaContrasena(){
-        $nuevacontra=$_GET['contra1'];
+        $nuevacontra=$_GET['contra'];
         $confirmar=$_GET['contra2'];
         $email=$_GET['email'];
         if($nuevacontra==$confirmar){
@@ -173,7 +153,48 @@ class UsuarioControl extends Usuario{
          echo "<script>
             alert('Nueva Contraseña registrada, ya puede ingresar con sus credenciales.');
             window.location= 'UsuarioControl.php?action=login'
-            </script>";  
+            </script>"; 
+            
+            $mensaje = '
+            <html>
+            <head>
+              <title>Restablecer</title>
+            </head>
+            <body>
+                <h1>Macarena.net</h1>
+                <div style="text-align:center; background-color:#DCBCB5">
+                    <p>Contraseña actualizada</p>
+                    
+                    <p>¡Hola!, hemos aceptado el cambio de tu contraseña correctamente, bienvenido nuevamente!</p>
+                    <img src="https://cutewallpaper.org/24/password-icon-png/password-icon-png-images-free-transparent-password-icon-download-kindpng.png">
+                    <p> <small> Si usted no cambió de contraseña por favor comuníquese con el administrador</small> </p>
+                </div>
+            </body>
+            </html>
+            '; 
+           $mail = new PHPMailer(true);
+            try {
+                $mail->SMTPDebug = 0;
+                $mail->isSMTP();
+                $mail->Host       = 'smtp.gmail.com';
+                $mail->SMTPAuth   = true;
+                $mail->Username   = 'colombiabsent@gmail.com';
+                $mail->Password   = 'colombia1234.';
+                $mail->SMTPSecure = 'tls';
+                $mail->Port       = 587;
+                $mail->setFrom('colombiabsent@gmail.com', 'Colombia Absent');
+                $mail->addAddress($_GET['email']);
+                $mail->isHTML(true);
+                $mail->Subject = 'Actualizacion contraseña';
+                $mail->Body    = $mensaje;
+                $mail->send();
+                echo "<script>
+            alert('Por favor revisa tu correo electronico.');
+            window.location= 'UsuarioControl.php?action=login'
+        </script>";
+            } catch (Exception $e) {
+                echo "No se envio nada";
+            }
         }
         else{
             echo "<script>
@@ -187,48 +208,6 @@ class UsuarioControl extends Usuario{
         require '../Vista/Usuario/ChangePassword.php';
     }
     
-      
-    
-   
-   
-/*public function SaveInfoForModel($nombre,$email,$documento,$contrasena,$rol) {
-       $this->nombre =$nombre; 
-       $this->email =$email; 
-       $this->documento =$documento; 
-       $this->contrasena =$contrasena; 
-       $this->rol =$rol; 
-       //$this->foto =$foto; 
-      // $this->foto_url =$foto_url; 
-       $this->InsertUsuario();
-       
-    }*/
-
-   /*public function VerifyLogin($nombre,$password){
-$this->nombre=$nombre;
-$this->password=$password;
-$usuarioinformacion=$this->BuscarUsuarioForName();
-foreach($usuarioinformacion as $usuario){}
-   if(password_verify($password,$usuario->contrasena)){
-      
-       $_SESSION['nombre']=$usuario->nombre_usuario;
-       $_SESSION['email']=$usuario->email;
-       $_SESSION['rol']=$usuario->rol;
-       
-     if($_SESSION['rol']=='Admin'){
-        $this->RedireccionarRolAdmin();
-       }
-       if($_SESSION['rol']=='Invitado'){
-        $this->RedireccionarRolInvitado();
-       }
-       if($_SESSION['rol']=='Usuario'){
-        $this->RedireccionarRolUsuario();
-       }
-   }
-   else{
-       echo "No es :'v";
-   }
-
-   }*/
    public function Salir(){
     session_destroy();
     $this->RedireccionarAlLogin();
@@ -246,32 +225,6 @@ if(isset($_GET['action']) && $_GET['action']=='usuario'){
     $instanciacontrolador->InsertViewUsu();
 }
 
-/*if(isset($_POST['action']) && $_POST['action']=='insert'){
-    //Se encripta la contraseña
-   $instanciacontrolador= new UsuarioControl();
-    //$password= password_hash($_POST['contrasena'], PASSWORD_BCRYPT);
-    $password= sha1($_POST['contrasena']); //REQUERIMIENTO 3
-
-    //No me funciono esta parte para la foto.
-    //$foto= $_FILES['imagen']['name'];
-    //$fototemporal= $_FILES['imagen']['tmp_name'];
-    //$fotourl="../Vista/Usuario/Image/" . $foto;
-    //copy($fototemporal,$foto_url);
-    $instanciacontrolador->SaveInfoForModel(
-        $_POST['nombre'],
-        $_POST['email'],
-        $_POST['documento'],
-        $password,
-        $_POST['rol'],
-        //$foto,
-       // $foto_url   
-    );
-}*/
-
-/*if(isset($_POST['action']) && $_POST['action']=='login'){
-    $instanciacontrolador= new UsuarioControl();
-    $instanciacontrolador->VerifyLogin($_POST['nombre'],$_POST['password']);
-}*/
 if(isset($_GET['action']) && $_GET['action']=='logout'){
     $instanciacontrolador= new UsuarioControl();
     $instanciacontrolador->Salir();  
@@ -294,12 +247,27 @@ if(isset($_GET['action']) && $_GET['action']=='reestablecer'){
 
 if(isset($_GET['action']) && $_GET['action']=='contrasena'){
     $instanciacontrolador= new UsuarioControl();
-   $instanciacontrolador->NuevaContrasena();  
+   $instanciacontrolador->NuevaContrasena(); 
 }
 
 if(isset($_GET['action']) && $_GET['action']=='changepassword'){
     $instanciacontrolador = new UsuarioControl();
     $instanciacontrolador -> ChangePassword();
+}
+if(isset($_GET['action']) && $_GET['action']=='valorar'){
+    $instanciacontrolador= new UsuarioControl();
+    $instanciacontrolador->LoginViewCuestionario();
+  
+}
+if(isset($_GET['action']) && $_GET['action']=='revisar'){
+    $instanciacontrolador= new UsuarioControl();
+    $instanciacontrolador->LoginViewResultados();
+  
+}
+if(isset($_GET['action']) && $_GET['action']=='planeacion'){
+    $instanciacontrolador= new UsuarioControl();
+    $instanciacontrolador->LoginViewPlaneacion();
+  
 }
 
 ?>

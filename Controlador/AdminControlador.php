@@ -9,19 +9,19 @@ class AdminControlador extends Admin{
     {
     
        
-       header("location: AdminControlador.php?action=admin");
+       header("location: ../Inicial/header.php");
     }
     public function RedireccionarRolUsuario()
     {
     
        
-       header("location: Usuariocontrol.php?action=usuario");
+        header("location: ../Inicial/header.php");
     }
     public function RedireccionarRolInvitado()
     {
     
        
-       header("location: InvitadoControlador.php?action=invitado");
+        header("location: ../Inicial/header.php");
     }
     public function InsertView()
     {
@@ -75,12 +75,7 @@ class AdminControlador extends Admin{
 
 }
 }
-
-  
-  
-
-
-  if(isset($_SESSION['rol']) && $_SESSION['rol']!='Admin'){
+ if(isset($_SESSION['rol']) && $_SESSION['rol']!='Admin'){
    
       echo "<script>
       alert('No tiene permisos en este módulo');

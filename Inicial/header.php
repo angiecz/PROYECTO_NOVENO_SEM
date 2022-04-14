@@ -2,21 +2,15 @@
 require '../Controlador/InicioControlador.php';
 $is = new InicioControlador();
 ?>
-
 <!DOCTYPE html>
 <html lang="en">
 
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
   <!-- ===== CSS ===== -->
   <link rel="stylesheet" href="../CSS/Header.css">
-
   <title>MACARENA.NET-INICIO</title>
-
-
-
 </head>
 
 <body id="body-pd">
@@ -37,17 +31,6 @@ $is = new InicioControlador();
             <ion-icon name="chatbubbles-outline" class="nav__icon"></ion-icon>
             <span class="nav__name">Login</span>
           </a>
-
-
-          <!--<a href="http://localhost/PROYECTO_NOVENO_SEM/Controlador/UsuarioControl.php?action=insert" class="nav__link">
-                            <ion-icon name="settings-outline" class="nav__icon"></ion-icon>
-                            <span class="nav__name">Registrese</span>
-                        </a>
--->
-          <!--  <a href="http://localhost/PROYECTO_NOVENO_SEM/Controlador/UsuarioControl.php?action=usuario" class="nav__link">
-                            <ion-icon name="chatbubbles-outline" class="nav__icon"></ion-icon> 
-                            <span class="nav__name">Usuario</span> -->
-
           <?php
           try {
             if (empty($_SESSION['rol'])) {
@@ -55,7 +38,24 @@ $is = new InicioControlador();
             } else if ($_SESSION['rol'] == 'Admin') { ?>
               <a href="http://localhost/PROYECTO_NOVENO_SEM/Controlador/AdminControlador.php?action=insert" class="nav__link">
                 <ion-icon name="settings-outline" class="nav__icon"></ion-icon>
-                <span class="nav__name">Registrese</span>
+                <span class="nav__name">Registrar usuario</span>
+              </a>
+
+          <?php }
+          } catch (Exception $e) {
+          } ?>
+          <?php
+          try {
+            if (empty($_SESSION['rol'])) {
+              echo '<script language="javascript">alert("No recibirá mayor opción debido a no estar logueado, por favor dirígase al login.");</script>';
+            } else if ($_SESSION['rol'] == 'Usuario') { ?>
+              <a href="http://localhost/PROYECTO_NOVENO_SEM/Controlador/UsuarioControl.php?action=valorar" class="nav__link">
+                <ion-icon name="settings-outline" class="nav__icon"></ion-icon>
+                <span class="nav__name">Hardening</span>
+              </a>
+              <a href="http://localhost/PROYECTO_NOVENO_SEM/Controlador/UsuarioControl.php?action=planeacion" class="nav__link">
+                <ion-icon name="settings-outline" class="nav__icon"></ion-icon>
+                <span class="nav__name">Planeación E</span>
               </a>
           <?php }
           } catch (Exception $e) {
@@ -69,28 +69,27 @@ $is = new InicioControlador();
         </div>
       </div>
       <div class="nav__list__under">
-      <?php
-            try{
-              if(empty($_SESSION['rol'])){
-                echo '<script language="javascript">alert("No recibirá mayor opción debido a no estar logueado, por favor dirígase al login.");</script>';
-              }else{
-      ?>
-                <a href="http://localhost/PROYECTO_NOVENO_SEM/Controlador/UsuarioControl.php?action=changepassword" class="nav__link">
-                  <ion-icon name="finger-print-outline" class="nav__icon"></ion-icon>
-                  <span class="nav__name">Cambiar contraseña</span>
-                </a>
-      <?php
-              }
-            }catch(Exception $e){
-
-            }
+        <?php
+        try {
+          if (empty($_SESSION['rol'])) {
+            echo '<script language="javascript">alert("No recibirá mayor opción debido a no estar logueado, por favor dirígase al login.");</script>';
+          } else {
         ?>
-      <a href="http://localhost/PROYECTO_NOVENO_SEM/Controlador/UsuarioControl.php?action=logout" class="nav__link">
-        <ion-icon name="log-out-outline" class="nav__icon"></ion-icon>
-        <span class="nav__name">Log Out</span>
-      </a>
+            <a href="http://localhost/PROYECTO_NOVENO_SEM/Controlador/UsuarioControl.php?action=changepassword" class="nav__link">
+              <ion-icon name="finger-print-outline" class="nav__icon"></ion-icon>
+              <span class="nav__name">Cambiar contraseña</span>
+            </a>
+        <?php
+          }
+        } catch (Exception $e) {
+        }
+        ?>
+        <a href="http://localhost/PROYECTO_NOVENO_SEM/Controlador/UsuarioControl.php?action=logout" class="nav__link">
+          <ion-icon name="log-out-outline" class="nav__icon"></ion-icon>
+          <span class="nav__name">Log Out</span>
+        </a>
       </div>
-      
+
     </nav>
   </div>
   <script>
@@ -141,9 +140,6 @@ $is = new InicioControlador();
 
   <!-- ===== MAIN JS ===== -->
   <script src="assets/js/main.js"></script>
-
-
-  </script>
 
   <div align="center">
     <image src="../Imagenes/FONDO.gif">
