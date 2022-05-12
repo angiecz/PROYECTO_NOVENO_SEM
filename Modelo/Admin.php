@@ -1,6 +1,7 @@
 <?php
-require '../Config/Conexion.php';
-class Admin{
+//require '../Config/Conexion.php';
+require '../libs/model_main.php';
+class Admin extends model_main{
     protected $id;
     protected $nombre;
     protected $email;

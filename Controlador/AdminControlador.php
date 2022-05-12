@@ -1,106 +1,110 @@
 <?php
 require '../Modelo/Admin.php';
 require 'InicioControlador.php';
-$ics= new InicioControlador();
+$ics = new InicioControlador();
 
 
-class AdminControlador extends Admin{
+class AdminControlador extends Admin
+{
     public function RedireccionarRolAdmin()
     {
-    
-       
-       header("location: ../Inicial/header.php");
+
+
+        header("location: ../Inicial/header.php");
     }
     public function RedireccionarRolUsuario()
     {
-    
-       
+
+
         header("location: ../Inicial/header.php");
     }
     public function RedireccionarRolInvitado()
     {
-    
-       
+
+
         header("location: ../Inicial/header.php");
     }
     public function InsertView()
     {
         require '../Vista/Admin/insertar.php';
     }
-    
 
-    public function VerifyLogin($nombre,$password){
-        $this->nombre=$nombre;
-        $this->password=$password;
-       
-        $usuarioinformacion=$this->BuscarUsuarioForName();
-        foreach($usuarioinformacion as $usuario){}
-           if(password_verify($password,$usuario->contrasena)){
-            $_SESSION
-               ['nombre']=$usuario->nombre_usuario;
-               $_SESSION['email']=$usuario->email;
-               $_SESSION['rol']=$usuario->rol;
 
-             if($_SESSION['rol']=='Admin'){
+    public function VerifyLogin($nombre, $password)
+    {
+        $this->nombre = $nombre;
+        $this->password = $password;
+
+        $usuarioinformacion = $this->BuscarUsuarioForName();
+        foreach ($usuarioinformacion as $usuario) {
+        }
+        if (password_verify($password, $usuario->contrasena)) {
+            $_SESSION['nombre'] = $usuario->nombre_usuario;
+            $_SESSION['email'] = $usuario->email;
+            $_SESSION['rol'] = $usuario->rol;
+            
+           // $this->insert_log($usuario, $usuario);
+            if ($_SESSION['rol'] == 'Admin') {
                 $this->RedireccionarRolAdmin();
-               }
-               if($_SESSION['rol']=='Invitado'){
+            }
+            if ($_SESSION['rol'] == 'Invitado') {
                 $this->RedireccionarRolInvitado();
-               }
-               if($_SESSION['rol']=='Usuario'){
+            }
+            if ($_SESSION['rol'] == 'Usuario') {
                 $this->RedireccionarRolUsuario();
-               }
-           }
-           else{
+            }
+        } else {
             echo "<script>
             alert('Credenciales incorrectas, vuelva a intentarlo.');
             window.location= 'UsuarioControl.php?action=login'
         </script>";
-           }
-        
-           }
+        }
+    }
 
     public function InsertViewAdmin()
     {
         require '../Vista/Admin/admin.php';
     }
-    public function SaveInfoForModel($nombre,$email,$documento,$contrasena,$rol) {
-        $this->nombre =$nombre; 
-        $this->email =$email; 
-        $this->documento =$documento; 
-        $this->contrasena =$contrasena; 
-        $this->rol =$rol; 
+    public function SaveInfoForModel($nombre, $email, $documento, $contrasena, $rol)
+    {
+        $this->nombre = $nombre;
+        $this->email = $email;
+        $this->documento = $documento;
+        $this->contrasena = $contrasena;
+        $this->rol = $rol;
         //$this->foto =$foto; 
-       // $this->foto_url =$foto_url; 
+        // $this->foto_url =$foto_url; 
         $this->InsertUsuario();
+    }
+}
+if (isset($_SESSION['rol']) && $_SESSION['rol'] != 'Admin') {
 
-}
-}
- if(isset($_SESSION['rol']) && $_SESSION['rol']!='Admin'){
-   
-      echo "<script>
+    echo "<script>
       alert('No tiene permisos en este módulo');
       window.location= '../Inicial/header.php#'
   </script>";
-  }
-
-   
-  if(isset($_POST['action']) && $_POST['action']=='login'){
-    $instanciacontrolador= new AdminControlador();
-    $instanciacontrolador->VerifyLogin($_POST['nombre'],$_POST['password']);
 }
-if(isset($_GET['action']) && $_GET['action']=='admin'){
-    $instanciacontrolador= new AdminControlador();
+
+
+if (isset($_POST['action']) && $_POST['action'] == 'login') {
+    echo "<script>
+            alert(Entra');'
+            </script>";
+    $instanciacontrolador = new AdminControlador();
+    $instanciacontrolador->VerifyLogin($_POST['nombre'], $_POST['password']);
+}
+if (isset($_GET['action']) && $_GET['action'] == 'admin') {
+    $instanciacontrolador = new AdminControlador();
     $instanciacontrolador->InsertViewAdmin();
 }
-if(isset($_GET['action']) && $_GET['action']=='insert'){
-    $instanciacontrolador= new AdminControlador();
+if (isset($_GET['action']) && $_GET['action'] == 'insert') {
+    $instanciacontrolador = new AdminControlador();
     $instanciacontrolador->InsertView();
 }
-if(isset($_POST['action']) && $_POST['action']=='insert'){
+if (isset($_POST['action']) && $_POST['action'] == 'insert') {
     //Se encripta la contraseña
-   $instanciacontrolador= new AdminControlador();
-    $password= password_hash($_POST['contrasena'], PASSWORD_BCRYPT);
+    $instanciacontrolador = new AdminControlador();
+    $password = password_hash($_POST['contrasena'], PASSWORD_BCRYPT);
     //$password= sha1($_POST['contrasena']); //REQUERIMIENTO 3
 
     //No me funciono esta parte para la foto.
@@ -115,12 +119,11 @@ if(isset($_POST['action']) && $_POST['action']=='insert'){
         $password,
         $_POST['rol'],
         //$foto,
-       // $foto_url
-        
+        // $foto_url
+
     );
     echo "<script>
             alert('Usuario Registrado');
             window.location= '../Inicial/header.php'
-            </script>";  
+            </script>";
 }
-?>
