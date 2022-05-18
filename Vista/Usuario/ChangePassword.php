@@ -34,19 +34,19 @@ if(isset($_GET['msg'])){
                     <input type="hidden" name="name" value='<?php echo $name;?>'>
                     <input type="hidden" name="action" value="ChangePassword">
                     <div class="password_flex">
-                        <input type="password" name="OldPassword" placeholder="OldPassword" id="OldPassword">
+                        <input type="password" name="OldPassword" placeholder="Digite su contraseña actual" id="OldPassword">
                         <button class="Botonpassword" type="button" onclick="mostrarOldContrasena()">
                             <ion-icon name="eye-outline" class="nav__logo" id="OldLogito"></ion-icon>
                         </button>
                     </div>
                     <div class="password_flex">
-                        <input type="password" name="NewPassword" placeholder="NewPassword" id="NewPassword">
+                        <input type="password" name="NewPassword" placeholder="Digite su nueva contraseña" id="NewPassword">
                         <button class= "Botonpassword" type="button" onclick="mostrarNewContrasena()">
                             <ion-icon name="eye-outline" class="nav__logo" id="NewLogito"></ion-icon>
                         </button>
                     </div>
                     <div class="password_flex">
-                        <input type="password" name="RepeatNewPassword" placeholder="RepeatNewPassword" id="RepeatNewPassword">
+                        <input type="password" name="RepeatNewPassword" placeholder="Vuelva a digitar su nueva contraseña" id="RepeatNewPassword">
                         <button class= "Botonpassword" type="button" onclick="mostrarRepeatNewContrasena()">
                             <ion-icon name="eye-outline" class="nav__logo" id="RepeatNewLogito"></ion-icon>
                         </button>
