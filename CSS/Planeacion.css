@@ -1235,4 +1235,10 @@
   .btn-15:active {
     top: 2px;
   }
-  
+  #gracias{
+    background-image: url(../Imagenes/Planeacionestrategica.png);
+    background-repeat:no-repeat ;
+    background-size: cover;
+	width: 1350px;
+	height: 480px;
+}
