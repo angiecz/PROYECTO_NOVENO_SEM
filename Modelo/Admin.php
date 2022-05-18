@@ -31,6 +31,7 @@ protected function BuscarUsuarioForName(){
     $consulta=$ic->db->prepare($sql);
     $consulta->execute();
     $objetoconsulta=$consulta->fetchAll(PDO::FETCH_OBJ);
+   
     return $objetoconsulta;
     
 }

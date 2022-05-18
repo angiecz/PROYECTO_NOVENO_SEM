@@ -42,8 +42,10 @@ class AdminControlador extends Admin
             $_SESSION['nombre'] = $usuario->nombre_usuario;
             $_SESSION['email'] = $usuario->email;
             $_SESSION['rol'] = $usuario->rol;
-            
-           // $this->insert_log($usuario, $usuario);
+            $ip = $_SERVER['REMOTE_ADDR'];
+            $user_agent = $_SERVER['HTTP_USER_AGENT'];
+            $log_type = 1;
+            $this->insert_log($usuario->id, $log_type, $ip, $user_agent);
             if ($_SESSION['rol'] == 'Admin') {
                 $this->RedireccionarRolAdmin();
             }

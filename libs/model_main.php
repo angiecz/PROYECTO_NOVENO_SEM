@@ -12,14 +12,15 @@ class model_main
     {
         
     }
-    protected function insert_log($user_id,$ip)
+    protected function insert_log($user_id,$log_type, $ip, $user_agent)
     {
         $ic = new Conexion();
-        $sql = "INSERT INTO log(user_id,ip) VALUES (?,?)";
+        $sql = "INSERT INTO log(user_id,log_type, ip,user_agent) VALUES (?,?,?,?)";
         $insertar = $ic->db->prepare($sql);
-        $insertar->bindParam(1, $this->user_id);
-        $insertar->bindParam(2, $this->ip);
-        // $insertar->bindParam(3,$this->documento);
+        $insertar->bindParam(1, $user_id);
+        $insertar->bindParam(2, $log_type);
+        $insertar->bindParam(3, $ip);
+        $insertar->bindParam(4, $user_agent);
         // $insertar->bindParam(4,$this->contrasena);
         // $insertar->bindParam(5,$this->rol);
         $insertar->execute();
