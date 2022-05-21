@@ -92,6 +92,7 @@ class UsuarioControl extends Usuario{
           
         $mail = new PHPMailer(true);
         try {
+            $mail->CharSet = 'UTF-8';
             $mail->SMTPDebug = 0;
             $mail->isSMTP();
             $mail->Host       = 'smtp.gmail.com';
@@ -103,7 +104,9 @@ class UsuarioControl extends Usuario{
             $mail->setFrom('colombiabsent@gmail.com', 'Colombia Absent');
             $mail->addAddress($_GET['emaila']);
             $mail->isHTML(true);
-            $mail->Subject = 'Reestablecer contraseña';
+            $subject = "Reestablecer contraseña";
+            $subject = utf8_decode($subject);
+            $mail->Subject = $subject;
             $mail->Body    = $mensaje;
             $mail->send();
             echo "<script>
@@ -181,6 +184,7 @@ class UsuarioControl extends Usuario{
             '; 
            $mail = new PHPMailer(true);
             try {
+                $mail->CharSet = 'UTF-8';
                 $mail->SMTPDebug = 0;
                 $mail->isSMTP();
                 $mail->Host       = 'smtp.gmail.com';
@@ -192,7 +196,9 @@ class UsuarioControl extends Usuario{
                 $mail->setFrom('colombiabsent@gmail.com', 'Colombia Absent');
                 $mail->addAddress($_GET['email']);
                 $mail->isHTML(true);
-                $mail->Subject = 'Actualizacion contraseña';
+                $subject = "Actualizacion contraseña";
+                $subject = utf8_decode($subject);
+                $mail->Subject = $subject;
                 $mail->Body    = $mensaje;
                 $mail->send();
                 echo "<script>

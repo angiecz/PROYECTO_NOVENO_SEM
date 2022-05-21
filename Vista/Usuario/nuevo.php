@@ -12,6 +12,8 @@ $email=$_GET['emaila'];
         <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
         <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
         <script src="forte.js"></script>
+        <!-- ===== IONICONS ===== -->
+        <script src="https://unpkg.com/ionicons@5.1.2/dist/ionicons.js"></script>
         <link href="http://localhost/PROYECTO_NOVENO_SEM/CSS/RecuperarContra.css" rel="stylesheet" type="text/css">
         <title>Nueva contraseña</title>
 </head>
@@ -33,9 +35,19 @@ $email=$_GET['emaila'];
                
                 <input type="hidden" name="action" value="contrasena"> 
                 <span  class="fs-subtitle1" id="Mensaje">Aquí mostraremos la fortaleza generada por tu contraseña</span>
-                <input type="password" name="contra" id="contra" placeholder="Ingrese su nueva contraseña" class="form-control" >
+                <div class="password_flex">
+                        <input type="password" name="contra" id="contra" placeholder="Ingrese su nueva contraseña" class="form-control" >
+                        <button class="Botonpassword" type="button" onclick="mostrarNewPassword()">
+                            <ion-icon name="eye-outline" class="nav__logo" id="NewPassword"></ion-icon>
+                        </button>
+                </div>
                 <span  class="fs-subtitle1" id="Mensaje1">Estado de tu contraseña:</span>
-                <input type="password" id="contra2" name="contra2" placeholder="Ingrese su nueva contraseña" class="form-control" >
+                <div class="password_flex">
+                        <input type="password" id="contra2" name="contra2" placeholder="Ingrese su nueva contraseña" class="form-control" >
+                        <button class="Botonpassword" type="button" onclick="mostrarNewPasswordRepeat()">
+                            <ion-icon name="eye-outline" class="nav__logo" id="NewPasswordRepeat"></ion-icon>
+                        </button>
+                </div>
                 <input type="hidden" name="email"  class="form-control" value='<?php echo $email;?>'> 
                <button type="submit" class="next action-button" >Guardar</button>     
             </fieldset>    
@@ -81,4 +93,30 @@ $('#contra2').keyup(function(e) {
      return true;
 });
 </script>
+
+
+<script>
+        function mostrarNewPassword(){
+      var tipo = document.getElementById("contra");
+      var icon = document.getElementById("NewPassword");
+      if(tipo.type == "password"){
+        tipo.type = "text";
+        icon.name = "eye-off-outline";
+    }else{
+        tipo.type = "password";
+        icon.name = "eye-outline";
+    }
+}
+function mostrarNewPasswordRepeat(){
+    var tipo = document.getElementById("contra2");
+    var icon = document.getElementById("NewPasswordRepeat");
+    if(tipo.type == "password"){
+        tipo.type = "text";
+        icon.name = "eye-off-outline";
+    }else{
+        tipo.type = "password";
+        icon.name = "eye-outline";
+    }
+}
+    </script>
   </html>

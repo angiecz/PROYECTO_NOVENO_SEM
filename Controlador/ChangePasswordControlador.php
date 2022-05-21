@@ -12,14 +12,9 @@ class ChangePassword extends Admin{
     public function CompareNewsPasswords( $newpassword, $repeatnewpassword){
         $instanciacontrolador = new ChangePassword();
         if(strcmp($newpassword, $repeatnewpassword) != 0){
-            echo "<script>
-                alert('Las contraseñas no inciden');
-            </script>";
-            //require ;
-            header("Location: http://localhost/PROYECTO_NOVENO_SEM/Controlador/UsuarioControl.php?action=changepassword");
+            header("Location: http://localhost/PROYECTO_NOVENO_SEM/Controlador/UsuarioControl.php?action=changepassword&msg=2");
             die();
         }
-        $instanciacontrolador -> CompareOldNewPasswords($_POST['OldPassword'], $_POST['name'], $_POST['email']);
     }
 
     public function CompareOldNewPasswords( $OldPassword, $name, $email){
@@ -27,18 +22,15 @@ class ChangePassword extends Admin{
         $usuarioinformacion=$this->BuscarContraForEmailName($name, $email);
         foreach($usuarioinformacion as $usuario){}
             if(!password_verify($OldPassword, $usuario->contrasena)){
-                echo "<script>
-                    alert('Las contraseñas no son iguales');
-                </script>";
-            require '../Vista/Usuario/ChangePassword.php';
+                header("Location: http://localhost/PROYECTO_NOVENO_SEM/Controlador/UsuarioControl.php?action=changepassword&msg=1");
+                die();
               }
-              $instanciacontrolador -> ChangePasswords($_POST['name'], $_POST['email'], $_POST['NewPassword']);
 
     }
 
     public function ChangePasswords($name, $email, $newpassword){
         $newpassword= password_hash($newpassword, PASSWORD_BCRYPT);
-        $updatepassword=$this->ChangePasswordBD($name, $email,$newpassword);
+        $updatepassword=$this->ChangePasswordBD($name, $email, $newpassword);
         $mensaje = '
         <html>
         <head>
@@ -57,6 +49,7 @@ class ChangePassword extends Admin{
         '; 
        $mail = new PHPMailer(true);
         try {
+            $mail->CharSet = 'UTF-8';
             $mail->SMTPDebug = 0;
             $mail->isSMTP();
             $mail->Host       = 'smtp.gmail.com';
@@ -66,14 +59,16 @@ class ChangePassword extends Admin{
             $mail->SMTPSecure = 'tls';
             $mail->Port       = 587;
             $mail->setFrom('colombiabsent@gmail.com', 'Colombia Absent');
-            $mail->addAddress($_GET['email']);
+            $mail->addAddress($_POST['email']);
             $mail->isHTML(true);
-            $mail->Subject = 'Actualizacion contraseña';
+            $subject = "Actualizacion contraseña";
+            $subject = utf8_decode($subject);
+            $mail->Subject = $subject;
             $mail->Body    = $mensaje;
             $mail->send();
             echo "<script>
-            alert('Se ha actualizado tu contraseña. \nPor favor revisa tu correo');
-            window.location= 'UsuarioControl.php?action=login';
+                alert('Se ha actualizado tu contraseña. Por favor revisa tu correo');
+                window.location= 'http://localhost/PROYECTO_NOVENO_SEM/Inicial/header.php'
             </script>";
         } catch (Exception $e) {
             echo "No se envio nada";
@@ -87,5 +82,8 @@ class ChangePassword extends Admin{
     if(isset($_POST['action']) && $_POST['action']=='ChangePassword'){
         $instanciacontrolador = new ChangePassword();
         $instanciacontrolador -> CompareNewsPasswords($_POST['NewPassword'], $_POST['RepeatNewPassword']);
+        $instanciacontrolador -> CompareOldNewPasswords($_POST['OldPassword'], $_POST['name'], $_POST['email']);
+        $instanciacontrolador -> ChangePasswords($_POST['name'], $_POST['email'], $_POST['NewPassword']);
+
     }
 ?>

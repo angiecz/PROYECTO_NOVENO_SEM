@@ -51,18 +51,18 @@ if(isset($_GET['msg'])){
                             <ion-icon name="eye-outline" class="nav__logo" id="RepeatNewLogito"></ion-icon>
                         </button>
                     </div>
-                    <button type="submit" class="next action-button">Restablecer</button>
                     <?php
-                        if(isset($msg) and $msg ===1){
+                        if(isset($msg) && $msg == 1){
                             ?>
-                            <p>Las contraseñas son distintas</p>
+                            <p class="Advertencia">La contraseña antigua no es igual</p>
                             <?php
-                        }else if(isset($msg) and $msg ===2){
+                        }else if(isset($msg) && $msg == 2){
                             ?>
-                            <p>Las contraseñas son distintas</p>
+                            <p class="Advertencia">Las contraseñas son distintas</p>
                             <?php
                         }
                     ?>
+                    <button type="submit" class="next action-button">Restablecer</button>
                 </fieldset>
             </form>
         </div>
