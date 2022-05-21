@@ -1,5 +1,11 @@
 <!------------ Thanks Daniel Almeida for the reference  ----------->
 <!-- https://dribbble.com/shots/4027518-Login-screen-interaction -->
+
+<?php
+if (isset($_GET['count'])) {
+    $count = $_GET['count'];
+}
+?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -23,7 +29,11 @@
                 <div class="h2">Bienvenido al sistema</div>
                 <div class="form-group">
                     <input type="hidden" name="action" value="login">
-                    <input type="text" name="nombre" placeholder="Nombre de tu usuario" required>
+                    <?php
+                    if (isset($count)) {
+                    ?><input type="hidden" name="count" value="<?php echo $count ?>">
+                    <?php } ?>
+                    <input type=" text" name="nombre" placeholder="Nombre de tu usuario" required>
                     <label for="Email"></label>
                 </div>
                 <div class="form-group">
@@ -31,10 +41,10 @@
                     <input type="password" name="password" placeholder="Password" required>
                     <label for="password"></label>
                 </div>
-
                 <div class="button-area">
                     <button class="btn btn-primary">Ingresar</button>
                 </div>
+
                 <a href="http://localhost/PROYECTO_NOVENO_SEM/Controlador/UsuarioControl.php?action=olvidar"
                     class="">¿Olvidaste tu contraseña?</a>
             </div>

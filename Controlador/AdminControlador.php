@@ -6,22 +6,21 @@ $ics = new InicioControlador();
 
 class AdminControlador extends Admin
 {
+
+    function __construct()
+    {
+    }
+
     public function RedireccionarRolAdmin()
     {
-
-
         header("location: ../Inicial/header.php");
     }
     public function RedireccionarRolUsuario()
     {
-
-
         header("location: ../Inicial/header.php");
     }
     public function RedireccionarRolInvitado()
     {
-
-
         header("location: ../Inicial/header.php");
     }
     public function InsertView()
@@ -30,7 +29,7 @@ class AdminControlador extends Admin
     }
 
 
-    public function VerifyLogin($nombre, $password)
+    public function VerifyLogin($nombre, $password, $postCount)
     {
         $this->nombre = $nombre;
         $this->password = $password;
@@ -56,10 +55,20 @@ class AdminControlador extends Admin
                 $this->RedireccionarRolUsuario();
             }
         } else {
+            if ($postCount == 3) {
+                $ip = $_SERVER['REMOTE_ADDR'];
+                $user_agent = $_SERVER['HTTP_USER_AGENT'];
+                $log_type = 3;
+                $this->insert_log($usuario->id, $log_type, $ip, $user_agent);
+                echo "<script>
+                alert('Credenciales incorrectas, vuelva a intentarlo.');
+                window.location= 'UsuarioControl.php?action=login'
+            </script>";
+            }
             echo "<script>
-            alert('Credenciales incorrectas, vuelva a intentarlo.');
-            window.location= 'UsuarioControl.php?action=login'
-        </script>";
+                alert('Credenciales incorrectas, vuelva a intentarlo.');
+                window.location= 'UsuarioControl.php?action=login&count=$postCount'
+            </script>";
         }
     }
 
@@ -86,15 +95,19 @@ if (isset($_SESSION['rol']) && $_SESSION['rol'] != 'Admin') {
       window.location= '../Inicial/header.php#'
   </script>";
 }
-
-
 if (isset($_POST['action']) && $_POST['action'] == 'login') {
     echo "<script>
             alert(Entra');'
             </script>";
     $instanciacontrolador = new AdminControlador();
-    $instanciacontrolador->VerifyLogin($_POST['nombre'], $_POST['password']);
+    if (isset($_POST['count'])) {
+        $sum = intval($_POST['count']) + 1;
+        $instanciacontrolador->VerifyLogin($_POST['nombre'], $_POST['password'], $sum);
+    } else {
+        $instanciacontrolador->VerifyLogin($_POST['nombre'], $_POST['password'], 1);
+    }
 }
+
 if (isset($_GET['action']) && $_GET['action'] == 'admin') {
     $instanciacontrolador = new AdminControlador();
     $instanciacontrolador->InsertViewAdmin();

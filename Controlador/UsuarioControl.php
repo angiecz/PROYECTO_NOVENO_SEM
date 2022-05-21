@@ -23,7 +23,10 @@ class UsuarioControl extends Usuario{
 
      public function LoginView()
     {
-        require '../Vista/Usuario/login.php';
+      
+     require '../Vista/Usuario/login.php';
+        
+       
     }
     public function LoginViewCuestionario()
     {
