@@ -9,10 +9,6 @@ class Usuario{
     protected $rol;
     protected $foto;
     protected $foto_url;
-
-
-    
-
     protected function InsertUsuario(){
         $ic=new Conexion();
         $sql= "INSERT INTO usuarios(nombre_usuario,email,documento,contrasena,rol) VALUES (?,?,?,?,?)";
@@ -35,6 +31,4 @@ class Usuario{
         return $objetoconsulta;
 }*/
 }
-
-
 ?>

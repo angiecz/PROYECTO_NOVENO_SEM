@@ -21,9 +21,6 @@
             }
 
             }
-        
-        
-        
             //Funcion que me permite cerrar una conexion cuando yo quiera =)
             public function CloseConexion()
             {

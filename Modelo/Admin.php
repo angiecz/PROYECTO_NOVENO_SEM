@@ -1,6 +1,7 @@
 <?php
-require '../Config/Conexion.php';
-class Admin{
+//require '../Config/Conexion.php';
+require '../libs/model_main.php';
+class Admin extends model_main{
     protected $id;
     protected $nombre;
     protected $email;
@@ -19,8 +20,6 @@ class Admin{
         $insertar->bindParam(3,$this->documento);
         $insertar->bindParam(4,$this->contrasena);
         $insertar->bindParam(5,$this->rol);
-        //$insertar->bindParam(6,$this->foto);
-       // $insertar->bindParam(7,$this->foto_url);
         $insertar->execute();
        
 }
@@ -30,6 +29,7 @@ protected function BuscarUsuarioForName(){
     $consulta=$ic->db->prepare($sql);
     $consulta->execute();
     $objetoconsulta=$consulta->fetchAll(PDO::FETCH_OBJ);
+   
     return $objetoconsulta;
     
 }

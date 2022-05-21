@@ -13,23 +13,27 @@ if(isset($_GET['msg'])){
 ?>
 <!DOCTYPE html>
 <html lang="en">
-    <head>
-        <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <meta http-equiv="X-UA-Compatible" content="ie=edge">
-        <link rel="stylesheet" href="../CSS/ChangePassword.css"> 
-        <!-- ===== IONICONS ===== -->
-        <script src="https://unpkg.com/ionicons@5.1.2/dist/ionicons.js"></script>
-        <title>Cambiar contraseña</title>
-    </head>
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="../CSS/ChangePassword.css">
+    <!-- ===== IONICONS ===== -->
+    <script src="https://unpkg.com/ionicons@5.1.2/dist/ionicons.js"></script>
+    <title>Cambiar contraseña</title>
+</head>
+
 </html>
+
 <body>
     <div class="row">
         <div class="col-md-6 col-md-offset-3">
             <form id="msform" action="../Controlador/ChangePasswordControlador.php" method="POST" class="form-signin">
                 <fieldset>
                     <h2 class="fs-title">Cambiar contraseña</h2>
-                    <h3 class="fs-subtitle">Hola, para el cambio de tu contraseña es requerida la siguiente información</h3>
+                    <h3 class="fs-subtitle">Hola, para el cambio de tu contraseña es requerida la siguiente información
+                    </h3>
                     <input type="hidden" name="email" value='<?php echo $email;?>'>
                     <input type="hidden" name="name" value='<?php echo $name;?>'>
                     <input type="hidden" name="action" value="ChangePassword">
@@ -68,38 +72,40 @@ if(isset($_GET['msg'])){
         </div>
     </div>
     <script>
-        function mostrarOldContrasena(){
-      var tipo = document.getElementById("OldPassword");
-      var icon = document.getElementById("OldLogito");
-      if(tipo.type == "password"){
-        tipo.type = "text";
-        icon.name = "eye-off-outline";
-    }else{
-        tipo.type = "password";
-        icon.name = "eye-outline";
+    function mostrarOldContrasena() {
+        var tipo = document.getElementById("OldPassword");
+        var icon = document.getElementById("OldLogito");
+        if (tipo.type == "password") {
+            tipo.type = "text";
+            icon.name = "eye-off-outline";
+        } else {
+            tipo.type = "password";
+            icon.name = "eye-outline";
+        }
     }
-}
-function mostrarNewContrasena(){
-    var tipo = document.getElementById("NewPassword");
-    var icon = document.getElementById("NewLogito");
-    if(tipo.type == "password"){
-        tipo.type = "text";
-        icon.name = "eye-off-outline";
-    }else{
-        tipo.type = "password";
-        icon.name = "eye-outline";
+
+    function mostrarNewContrasena() {
+        var tipo = document.getElementById("NewPassword");
+        var icon = document.getElementById("NewLogito");
+        if (tipo.type == "password") {
+            tipo.type = "text";
+            icon.name = "eye-off-outline";
+        } else {
+            tipo.type = "password";
+            icon.name = "eye-outline";
+        }
     }
-}
-function mostrarRepeatNewContrasena(){
-    var tipo = document.getElementById("RepeatNewPassword");
-    var icon = document.getElementById("RepeatNewLogito");
-    if(tipo.type == "password"){
-        tipo.type = "text";
-        icon.name = "eye-off-outline";
-    }else{
-        tipo.type = "password";
-        icon.name = "eye-outline";
+
+    function mostrarRepeatNewContrasena() {
+        var tipo = document.getElementById("RepeatNewPassword");
+        var icon = document.getElementById("RepeatNewLogito");
+        if (tipo.type == "password") {
+            tipo.type = "text";
+            icon.name = "eye-off-outline";
+        } else {
+            tipo.type = "password";
+            icon.name = "eye-outline";
+        }
     }
-}
     </script>
 </body>
