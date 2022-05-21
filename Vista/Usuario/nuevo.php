@@ -43,7 +43,7 @@ $email=$_GET['emaila'];
                 </div>
                 <span  class="fs-subtitle1" id="Mensaje1">Estado de tu contraseña:</span>
                 <div class="password_flex">
-                        <input type="password" id="contra2" name="contra2" placeholder="Ingrese su nueva contraseña" class="form-control" >
+                        <input type="password" id="contra2" name="contra2" placeholder="Ingrese su nueva contraseña nuevamente" class="form-control" >
                         <button class="Botonpassword" type="button" onclick="mostrarNewPasswordRepeat()">
                             <ion-icon name="eye-outline" class="nav__logo" id="NewPasswordRepeat"></ion-icon>
                         </button>
