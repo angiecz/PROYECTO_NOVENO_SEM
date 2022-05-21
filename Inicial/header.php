@@ -1,6 +1,15 @@
 <?php
 require '../Controlador/InicioControlador.php';
 $is = new InicioControlador();
+
+if (empty($_SESSION['rol'])) {
+
+    echo "<script>
+        alert('No te encuentras logueado');
+        window.location= '../Controlador/UsuarioControl.php?action=login'
+    </script>";
+}
+
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -33,10 +42,8 @@ $is = new InicioControlador();
                         <span class="nav__name">Login</span>
                     </a>
                     <?php
-          try {
-            if (empty($_SESSION['rol'])) {
-              echo '<script language="javascript">alert("No recibirá mayor opción debido a no estar logueado, por favor dirígase al login.");</script>';
-            } else if ($_SESSION['rol'] == 'Admin') { ?>
+                    try {
+                        if ($_SESSION['rol'] == 'Admin') { ?>
                     <a href="http://localhost/PROYECTO_NOVENO_SEM/Controlador/AdminControlador.php?action=insert"
                         class="nav__link">
                         <ion-icon name="settings-outline" class="nav__icon"></ion-icon>
@@ -44,13 +51,11 @@ $is = new InicioControlador();
                     </a>
 
                     <?php }
-          } catch (Exception $e) {
-          } ?>
+                    } catch (Exception $e) {
+                    } ?>
                     <?php
-          try {
-            if (empty($_SESSION['rol'])) {
-              echo '<script language="javascript">alert("No recibirá mayor opción debido a no estar logueado, por favor dirígase al login.");</script>';
-            } else if ($_SESSION['rol'] == 'Usuario') { ?>
+                    try {
+                        if ($_SESSION['rol'] == 'Usuario') { ?>
                     <a href="http://localhost/PROYECTO_NOVENO_SEM/Controlador/UsuarioControl.php?action=valorar"
                         class="nav__link">
                         <ion-icon name="settings-outline" class="nav__icon"></ion-icon>
@@ -62,33 +67,25 @@ $is = new InicioControlador();
                         <span class="nav__name">Planeación E</span>
                     </a>
                     <?php }
-          } catch (Exception $e) {
-          } ?>
+                    } catch (Exception $e) {
+                    } ?>
 
-                    <!--  <a href="http://localhost/PROYECTO_NOVENO_SEM/Controlador/InvitadoControlador.php?action=invitado" class="nav__link">
-                            <ion-icon name="chatbubbles-outline" class="nav__icon"></ion-icon>
-                            <span class="nav__name">Invitado</span>-->
-
-                    <!--  </a> -->
                 </div>
             </div>
-            <div class="nav__list__under">
+            <div class="nav_list_under">
                 <?php
-        try {
-          if (empty($_SESSION['rol'])) {
-            echo '<script language="javascript">alert("No recibirá mayor opción debido a no estar logueado, por favor dirígase al login.");</script>';
-          } else {
-        ?>
+                try {
+
+                ?>
                 <a href="http://localhost/PROYECTO_NOVENO_SEM/Controlador/UsuarioControl.php?action=changepassword"
                     class="nav__link">
                     <ion-icon name="finger-print-outline" class="nav__icon"></ion-icon>
                     <span class="nav__name">Cambiar contraseña</span>
                 </a>
                 <?php
-          }
-        } catch (Exception $e) {
-        }
-        ?>
+                } catch (Exception $e) {
+                }
+                ?>
                 <a href="http://localhost/PROYECTO_NOVENO_SEM/Controlador/UsuarioControl.php?action=logout"
                     class="nav__link">
                     <ion-icon name="log-out-outline" class="nav__icon"></ion-icon>
@@ -99,7 +96,7 @@ $is = new InicioControlador();
         </nav>
     </div>
     <script>
-    /*===== EXPANDER MENU  =====*/
+    /===== EXPANDER MENU  =====/
     const showMenu = (toggleId, navbarId, bodyId) => {
         const toggle = document.getElementById(toggleId),
             navbar = document.getElementById(navbarId),
@@ -115,7 +112,7 @@ $is = new InicioControlador();
     }
     showMenu('nav-toggle', 'navbar', 'body-pd')
 
-    /*===== LINK ACTIVE  =====*/
+    // /= === = LINK ACTIVE === == /
     const linkColor = document.querySelectorAll('.nav__link')
 
     function colorLink() {
@@ -125,7 +122,7 @@ $is = new InicioControlador();
     linkColor.forEach(l => l.addEventListener('click', colorLink))
 
 
-    /*===== COLLAPSE MENU  =====*/
+    // /= === = COLLAPSE MENU === == /
     const linkCollapse = document.getElementsByClassName('collapse__link')
     var i
 

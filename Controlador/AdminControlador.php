@@ -22,18 +22,35 @@ class AdminControlador extends Admin
     public function RedireccionarRolInvitado()
     {
         header("location: ../Inicial/header.php");
+        
     }
     public function InsertView()
     {
         require '../Vista/Admin/insertar.php';
     }
-
+    
+    public function ValidarPermisosAdmin()
+    {
+        if(isset($_SESSION['rol']) && $_SESSION['rol']!='Admin'){
+   
+            echo "<script>
+              alert('No tiene permisos en este módulo');
+              window.location= '../Inicial/header.php#'
+          </script>";
+          }
+          if(empty($_SESSION['rol'])){
+           
+            echo "<script>
+            alert('No te encuentras logueado');
+            window.location= 'UsuarioControl.php?action=login'
+        </script>";
+          }
+    }
 
     public function VerifyLogin($nombre, $password, $postCount)
     {
         $this->nombre = $nombre;
         $this->password = $password;
-
         $usuarioinformacion = $this->BuscarUsuarioForName();
         foreach ($usuarioinformacion as $usuario) {
         }
@@ -76,15 +93,12 @@ class AdminControlador extends Admin
     {
         require '../Vista/Admin/admin.php';
     }
-    public function SaveInfoForModel($nombre, $email, $documento, $contrasena, $rol)
-    {
-        $this->nombre = $nombre;
-        $this->email = $email;
-        $this->documento = $documento;
-        $this->contrasena = $contrasena;
-        $this->rol = $rol;
-        //$this->foto =$foto; 
-        // $this->foto_url =$foto_url; 
+    public function SaveInfoForModel($nombre,$email,$documento,$contrasena,$rol) {
+        $this->nombre =$nombre; 
+        $this->email =$email; 
+        $this->documento =$documento; 
+        $this->contrasena =$contrasena; 
+        $this->rol =$rol; 
         $this->InsertUsuario();
     }
 }
@@ -115,6 +129,7 @@ if (isset($_GET['action']) && $_GET['action'] == 'admin') {
 if (isset($_GET['action']) && $_GET['action'] == 'insert') {
     $instanciacontrolador = new AdminControlador();
     $instanciacontrolador->InsertView();
+    $instanciacontrolador->ValidarPermisosAdmin();
 }
 if (isset($_POST['action']) && $_POST['action'] == 'insert') {
     //Se encripta la contraseña
@@ -122,23 +137,19 @@ if (isset($_POST['action']) && $_POST['action'] == 'insert') {
     $password = password_hash($_POST['contrasena'], PASSWORD_BCRYPT);
     //$password= sha1($_POST['contrasena']); //REQUERIMIENTO 3
 
-    //No me funciono esta parte para la foto.
-    //$foto= $_FILES['imagen']['name'];
-    //$fototemporal= $_FILES['imagen']['tmp_name'];
-    //$fotourl="../Vista/Usuario/Image/" . $foto;
-    //copy($fototemporal,$foto_url);
     $instanciacontrolador->SaveInfoForModel(
         $_POST['nombre'],
         $_POST['email'],
         $_POST['documento'],
         $password,
         $_POST['rol'],
-        //$foto,
-        // $foto_url
-
+        
+        
     );
     echo "<script>
             alert('Usuario Registrado');
             window.location= '../Inicial/header.php'
-            </script>";
+            </script>";  
 }
+
+?>

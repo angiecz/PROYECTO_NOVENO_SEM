@@ -101,6 +101,7 @@ a{
   transition: .3s;
   cursor: pointer;
 }
+
 .nav__link:hover{
   background-color: var(--first-color);
 }

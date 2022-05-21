@@ -32,10 +32,7 @@ class UsuarioControl extends Usuario{
     {
         require '../Vista/Usuario/cuestionario.php';
     }
-    public function LoginViewResultados()
-    {
-        require '../Vista/Usuario/revision.php';
-    }
+   
     public function LoginViewOlvidar()
     {
         require '../Vista/Usuario/recuperar.php';
@@ -45,11 +42,23 @@ class UsuarioControl extends Usuario{
         require '../Vista/Usuario/planeacion.php';
     }
     
-    public function InsertViewUsu()
+    public function ValidarPermisos()
     {
-        require '../Vista/Usuario/usuario.php';
+        if(isset($_SESSION['rol']) && $_SESSION['rol']!='Usuario'){
+   
+            echo "<script>
+              alert('No tiene permisos en este módulo');
+              window.location= '../Inicial/header.php#'
+          </script>";
+          }
+          if(empty($_SESSION['rol'])){
+           
+            echo "<script>
+            alert('No te encuentras logueado');
+            window.location= 'UsuarioControl.php?action=login'
+        </script>";
+          }
     }
-    
     public function Correo(){
        
         //include '../Vista/Usuario/recuperar.php'; 
@@ -155,7 +164,6 @@ class UsuarioControl extends Usuario{
         $confirmar=$_GET['contra2'];
         $email=$_GET['email'];
         if($nuevacontra==$confirmar){
-           // $nuevacontra=sha1($confirmar);
            $nuevacontra= password_hash($confirmar, PASSWORD_BCRYPT);
             $ic=new Conexion();
             $sql="UPDATE usuarios SET contrasena='$nuevacontra' WHERE email='$email'";
@@ -224,16 +232,12 @@ class UsuarioControl extends Usuario{
    }
 }
 
-//LOS IF IBAN POR AQUI SOLOS
+
 if(isset($_GET['action']) && $_GET['action']=='login'){
     $instanciacontrolador= new UsuarioControl();
     $instanciacontrolador->LoginView();
 }
 
-if(isset($_GET['action']) && $_GET['action']=='usuario'){
-    $instanciacontrolador= new UsuarioControl();
-    $instanciacontrolador->InsertViewUsu();
-}
 
 if(isset($_GET['action']) && $_GET['action']=='logout'){
     $instanciacontrolador= new UsuarioControl();
@@ -243,16 +247,19 @@ if(isset($_GET['action']) && $_GET['action']=='logout'){
 if(isset($_GET['action']) && $_GET['action']=='olvidar'){
     $instanciacontrolador= new UsuarioControl();
     $instanciacontrolador->LoginViewOlvidar();  
+    
 }
 
 if(isset($_GET['action']) && $_GET['action']=='recuperar'){
     $instanciacontrolador= new UsuarioControl();
     $instanciacontrolador->Correo();
+    
 }
 
 if(isset($_GET['action']) && $_GET['action']=='reestablecer'){
     $instanciacontrolador= new UsuarioControl();  
     $instanciacontrolador->RestablecerContraseña();
+    
 }
 
 if(isset($_GET['action']) && $_GET['action']=='contrasena'){
@@ -263,20 +270,19 @@ if(isset($_GET['action']) && $_GET['action']=='contrasena'){
 if(isset($_GET['action']) && $_GET['action']=='changepassword'){
     $instanciacontrolador = new UsuarioControl();
     $instanciacontrolador -> ChangePassword();
+    
 }
 if(isset($_GET['action']) && $_GET['action']=='valorar'){
     $instanciacontrolador= new UsuarioControl();
     $instanciacontrolador->LoginViewCuestionario();
+    $instanciacontrolador->ValidarPermisos();
   
 }
-if(isset($_GET['action']) && $_GET['action']=='revisar'){
-    $instanciacontrolador= new UsuarioControl();
-    $instanciacontrolador->LoginViewResultados();
-  
-}
+
 if(isset($_GET['action']) && $_GET['action']=='planeacion'){
     $instanciacontrolador= new UsuarioControl();
     $instanciacontrolador->LoginViewPlaneacion();
+    $instanciacontrolador->ValidarPermisos();
   
 }
 

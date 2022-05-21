@@ -20,8 +20,6 @@ class Admin extends model_main{
         $insertar->bindParam(3,$this->documento);
         $insertar->bindParam(4,$this->contrasena);
         $insertar->bindParam(5,$this->rol);
-        //$insertar->bindParam(6,$this->foto);
-       // $insertar->bindParam(7,$this->foto_url);
         $insertar->execute();
        
 }
