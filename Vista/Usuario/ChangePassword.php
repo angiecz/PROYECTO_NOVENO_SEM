@@ -34,35 +34,35 @@ if(isset($_GET['msg'])){
                     <input type="hidden" name="name" value='<?php echo $name;?>'>
                     <input type="hidden" name="action" value="ChangePassword">
                     <div class="password_flex">
-                        <input type="password" name="OldPassword" placeholder="OldPassword" id="OldPassword">
+                        <input type="password" name="OldPassword" placeholder="Digite su contraseña actual" id="OldPassword">
                         <button class="Botonpassword" type="button" onclick="mostrarOldContrasena()">
                             <ion-icon name="eye-outline" class="nav__logo" id="OldLogito"></ion-icon>
                         </button>
                     </div>
                     <div class="password_flex">
-                        <input type="password" name="NewPassword" placeholder="NewPassword" id="NewPassword">
+                        <input type="password" name="NewPassword" placeholder="Digite su nueva contraseña" id="NewPassword">
                         <button class= "Botonpassword" type="button" onclick="mostrarNewContrasena()">
                             <ion-icon name="eye-outline" class="nav__logo" id="NewLogito"></ion-icon>
                         </button>
                     </div>
                     <div class="password_flex">
-                        <input type="password" name="RepeatNewPassword" placeholder="RepeatNewPassword" id="RepeatNewPassword">
+                        <input type="password" name="RepeatNewPassword" placeholder="Vuelva a digitar su nueva contraseña" id="RepeatNewPassword">
                         <button class= "Botonpassword" type="button" onclick="mostrarRepeatNewContrasena()">
                             <ion-icon name="eye-outline" class="nav__logo" id="RepeatNewLogito"></ion-icon>
                         </button>
                     </div>
-                    <button type="submit" class="next action-button">Restablecer</button>
                     <?php
-                        if(isset($msg) and $msg ===1){
+                        if(isset($msg) && $msg == 1){
                             ?>
-                            <p>Las contraseñas son distintas</p>
+                            <p class="Advertencia">La contraseña antigua no es igual</p>
                             <?php
-                        }else if(isset($msg) and $msg ===2){
+                        }else if(isset($msg) && $msg == 2){
                             ?>
-                            <p>Las contraseñas son distintas</p>
+                            <p class="Advertencia">Las contraseñas son distintas</p>
                             <?php
                         }
                     ?>
+                    <button type="submit" class="next action-button">Restablecer</button>
                 </fieldset>
             </form>
         </div>
