@@ -58,6 +58,7 @@ class AdminControlador extends Admin
             $_SESSION['nombre'] = $usuario->nombre_usuario;
             $_SESSION['email'] = $usuario->email;
             $_SESSION['rol'] = $usuario->rol;
+            $_SESSION['id'] = $usuario->id;
             $ip = $_SERVER['REMOTE_ADDR'];
             $user_agent = $_SERVER['HTTP_USER_AGENT'];
             $log_type = 1;
@@ -100,6 +101,10 @@ class AdminControlador extends Admin
         $this->contrasena =$contrasena; 
         $this->rol =$rol; 
         $this->InsertUsuario();
+        $ip = $_SERVER['REMOTE_ADDR'];
+        $user_agent = $_SERVER['HTTP_USER_AGENT'];
+        $log_type = 2;
+        $this->insert_log( $_SESSION['id'], $log_type, $ip, $user_agent);
     }
 }
 if (isset($_SESSION['rol']) && $_SESSION['rol'] != 'Admin') {
