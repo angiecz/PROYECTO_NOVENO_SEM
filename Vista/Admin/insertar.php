@@ -38,14 +38,28 @@
                 <fieldset>
                     <h2 class="fs-title">Acceso a reconocer</h2>
                     <label for="rol" class="fs-subtitle">Rol:</label>
-                    <select class="form-control" name="rol">
-                        <option value="Admin">Admin</option>
-                        <option value="Usuario">Usuario</option>
-                        <option value="Invitado">Invitado</option>
+                    <select class="form-control" name="rol" onchange="permisos(this.value)">
+                        <?php
+                        foreach ($rolesinformacion as $roles) {
+                            echo '<option value="' . $roles["id"] . '">' . $roles["nombre"] . '</option>';
+                        }
+                        ?>
                     </select>
                 </fieldset>
-                <input type="submit" class="next action-button" id="boton" value="Registrar">
-                <input type="reset" class="next action-button" id="boton" value="Reiniciar">
+                <h2 class="fs-title" style="margin-top: 25px;">Establecer permisos</h2>
+                <div class="div_permisos">
+                    <p>
+                    <input type="checkbox" id="cbox1" value="1" name="Permisos[]"> <label class="LabelCheck" for="cbox1" id="labcbox1">Registrar usuarios</label>
+                    </p>
+                    <p>
+                    <input type="checkbox" id="cbox2" value="2" name="Permisos[]"> <label class="LabelCheck" for="cbox2" id="labcbox2">Formulario Hardening</label>
+                    </p>
+                    <p>
+                    <input type="checkbox" id="cbox3" value="3" name="Permisos[]"> <label class="LabelCheck" for="cbox3" id="labcbox3">Planeación Estrategica</label>
+                    </p>
+                </div>
+                <input type="submit" class="next action-button" id="boton1" value="Registrar">
+                <input type="reset" class="next action-button" id="boton2" value="Reiniciar">
             </fieldset>
         </form>
     </div>
@@ -69,6 +83,29 @@
         }
         return true;
     });
+
+    function permisos(id) {
+        if (id == 1) {
+            $("#cbox1").show();
+            $("#cbox2").show();
+            $("#cbox3").show();
+            $("#labcbox1").show();
+            $("#labcbox2").show();
+            $("#labcbox3").show();
+        }
+        if (id == 2) {
+            $("#cbox1").hide();
+            $("#cbox2").show();
+            $("#cbox3").show();
+            $("#labcbox1").hide();
+            $("#labcbox2").show();
+            $("#labcbox3").show();
+
+        }
+    }
+</script>
+<script>
+
 </script>
 
 </html>
