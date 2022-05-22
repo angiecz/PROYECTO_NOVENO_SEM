@@ -30,5 +30,18 @@ class Usuario{
         $objetoconsulta=$consulta->fetchAll(PDO::FETCH_OBJ);
         return $objetoconsulta;
 }*/
+
+
+protected function BuscarUsuarioForName($email){
+  $ic=new Conexion();
+  $sql="SELECT * FROM usuarios WHERE email = '$email'";
+  $consulta=$ic->db->prepare($sql);
+  $consulta->execute();
+  $objetoconsulta=$consulta->fetchAll(PDO::FETCH_OBJ);
+ 
+  return $objetoconsulta;
+  
 }
-?>
+
+
+}

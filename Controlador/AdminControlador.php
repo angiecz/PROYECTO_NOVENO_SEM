@@ -79,6 +79,11 @@ class AdminControlador extends Admin
                 $log_type = 3;
                 $this->insert_log($usuario->id, $log_type, $ip, $user_agent);
                 echo "<script>
+                function popUp() {
+                    swal('Good job!', 'You clicked the button!', 'success');
+                }
+                </script>";
+                echo "<script>
                 alert('Credenciales incorrectas, vuelva a intentarlo.');
                 window.location= 'UsuarioControl.php?action=login'
             </script>";
