@@ -18,9 +18,9 @@ class UsuarioControl extends Usuario
     public function RedireccionarAlLogin()
     {
         echo "<script>
-        alert('Gracias por utilizar nuestros servicios.');
-        window.location= 'UsuarioControl.php?action=login'
-    </script>";
+            alert('Gracias por utilizar nuestros servicios.');
+            window.location= 'UsuarioControl.php?action=login'
+        </script>";
     }
 
     public function LoginView()
@@ -49,14 +49,14 @@ class UsuarioControl extends Usuario
             echo "<script>
               alert('No tiene permisos en este módulo');
               window.location= '../Inicial/header.php#'
-          </script>";
+            </script>";
         }
         if (empty($_SESSION['rol'])) {
 
             echo "<script>
-            alert('No te encuentras logueado');
-            window.location= 'UsuarioControl.php?action=login'
-        </script>";
+                alert('No te encuentras logueado');
+                window.location= 'UsuarioControl.php?action=login'
+            </script>";
         }
     }
     public function Correo()
@@ -125,17 +125,17 @@ class UsuarioControl extends Usuario
                 $mail->Body    = $mensaje;
                 $mail->send();
                 echo "<script>
-        alert('Por favor revisa tu correo electronico.');
-        window.location= 'UsuarioControl.php?action=login'
-    </script>";
+                    alert('Por favor revisa tu correo electronico.');
+                    window.location= 'UsuarioControl.php?action=login'
+                </script>";
             } catch (Exception $e) {
                 echo "No se envio nada";
             }
         } else {
             echo "<script>
-            alert('Correo de usuario incorrecto.');
-            window.location= 'UsuarioControl.php?action=olvidar'
-        </script>";
+                alert('Correo de usuario incorrecto.');
+                window.location= 'UsuarioControl.php?action=olvidar'
+            </script>";
         }
     }
 
@@ -151,19 +151,8 @@ class UsuarioControl extends Usuario
         $objetoc = $consulta->fetch(PDO::FETCH_ASSOC);
         // echo "<script>console.log('Console: " .var_dump(count($info))."' );</script>";
         if ($objetoc > 0) {
-            // echo "<script>console.log('Console: " .$email. $token. $codigo."' );</script>";
             require '../Vista/Usuario/nuevo.php';
-        }
-        //NO ME SIRVE ESTA VERIFICACION
-        else {
-            // echo "<script>
-            // alert('Su código no existe o no es correcto.');
-            // window.location= '../Vista/Usuario/restablecer.php'
-            // </script>";
-            // echo "<script>
-            // alert('Su código no existe o no es correcto.');
-            // window.location= '../Vista/Usuario/restablecer.php?emaila='$email'&token='$token''
-            // </script>";
+        } else {
             echo "<script>
             alert('Su código no existe o no es correcto.');
             window.location= '../Vista/Usuario/restablecer.php?emaila=$email&token=$token'
@@ -183,11 +172,19 @@ class UsuarioControl extends Usuario
             $sql = "UPDATE usuarios SET contrasena='$nuevacontra' WHERE email='$email'";
             $consulta = $ic->db->prepare($sql);
             $consulta->execute();
+            //Log Contraseña externa
+            $usuarioinformacion = $this->BuscarUsuarioForName($email);
+            foreach ($usuarioinformacion as $usuario) {
+            }
+            $ip = $_SERVER['REMOTE_ADDR'];
+            $user_agent = $_SERVER['HTTP_USER_AGENT'];
+            $log_type = 4;
+            $this->insert_log( $usuario->id, $log_type, $ip, $user_agent);
+            //
             echo "<script>
-            alert('Nueva Contraseña registrada, ya puede ingresar con sus credenciales.');
-            window.location= 'UsuarioControl.php?action=login'
+                alert('Nueva Contraseña registrada, ya puede ingresar con sus credenciales.');
+                window.location= 'UsuarioControl.php?action=login'
             </script>";
-
             $mensaje = '
             <html>
             <head>
@@ -232,8 +229,8 @@ class UsuarioControl extends Usuario
             }
         } else {
             echo "<script>
-            alert('No coinciden sus contraseñas, vuelva a registrarlas');
-            window.location= '../Vista/Usuario/nuevo.php'
+                alert('No coinciden sus contraseñas, vuelva a registrarlas');
+                window.location= '../Vista/Usuario/nuevo.php'
             </script>";
         }
     }

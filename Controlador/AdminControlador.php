@@ -59,6 +59,7 @@ class AdminControlador extends Admin
             $_SESSION['email'] = $usuario->email;
             $_SESSION['rol'] = $usuario->rol;
             $_SESSION['id'] = $usuario->id;
+            //Log login correct
             $ip = $_SERVER['REMOTE_ADDR'];
             $user_agent = $_SERVER['HTTP_USER_AGENT'];
             $log_type = 1;
@@ -74,6 +75,7 @@ class AdminControlador extends Admin
             }
         } else {
             if ($postCount == 3) {
+                 //Log many login attempts incorrecte
                 $ip = $_SERVER['REMOTE_ADDR'];
                 $user_agent = $_SERVER['HTTP_USER_AGENT'];
                 $log_type = 3;
@@ -106,6 +108,7 @@ class AdminControlador extends Admin
         $this->contrasena =$contrasena; 
         $this->rol =$rol; 
         $this->InsertUsuario();
+        //Log Created user new
         $ip = $_SERVER['REMOTE_ADDR'];
         $user_agent = $_SERVER['HTTP_USER_AGENT'];
         $log_type = 2;

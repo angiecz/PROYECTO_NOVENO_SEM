@@ -31,6 +31,11 @@ class ChangePassword extends Admin{
     public function ChangePasswords($name, $email, $newpassword){
         $newpassword= password_hash($newpassword, PASSWORD_BCRYPT);
         $updatepassword=$this->ChangePasswordBD($name, $email, $newpassword);
+        //Log change Password 
+        $ip = $_SERVER['REMOTE_ADDR'];
+        $user_agent = $_SERVER['HTTP_USER_AGENT'];
+        $log_type = 4;
+        $this->insert_log($_SESSION['id'], $log_type, $ip, $user_agent);
         $mensaje = '
         <html>
         <head>
