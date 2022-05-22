@@ -17,6 +17,11 @@ if (isset($_GET['msg'])) {
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js"></script>
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+        <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+        <script src="forte.js"></script>
     <link rel="stylesheet" href="../CSS/ChangePassword.css">
     <!-- ===== IONICONS ===== -->
     <script src="https://unpkg.com/ionicons@5.1.2/dist/ionicons.js"></script>
@@ -42,12 +47,14 @@ if (isset($_GET['msg'])) {
                             <ion-icon name="eye-outline" class="nav__logo" id="OldLogito"></ion-icon>
                         </button>
                     </div>
+                    <span class="fs-subtitle1" id="Mensaje">Estado de tu contraseña:</span>
                     <div class="password_flex">
                         <input type="password" name="NewPassword" placeholder="Digite su nueva contraseña" id="NewPassword">
                         <button class="Botonpassword" type="button" onclick="mostrarNewContrasena()">
                             <ion-icon name="eye-outline" class="nav__logo" id="NewLogito"></ion-icon>
                         </button>
                     </div>
+                    <span class="fs-subtitle1" id="Mensaje1">Estado de tu contraseña:</span>
                     <div class="password_flex">
                         <input type="password" name="RepeatNewPassword" placeholder="Vuelva a digitar su nueva contraseña" id="RepeatNewPassword">
                         <button class="Botonpassword" type="button" onclick="mostrarRepeatNewContrasena()">
@@ -108,3 +115,41 @@ if (isset($_GET['msg'])) {
         }
     </script>
 </body>
+<script>
+        $('#NewPassword').keyup(function(e) {
+                var strongRegex = new RegExp("^(?=.{8,})(?=.*[A-Z])(?=.*[a-z])(?=.*[0-9])(?=.*\\W).*$", "g");
+                var mediumRegex = new RegExp("^(?=.{7,})(((?=.*[A-Z])(?=.*[a-z]))|((?=.*[A-Z])(?=.*[0-9]))|((?=.*[a-z])(?=.*[0-9]))).*$", "g");
+                var enoughRegex = new RegExp("(?=.{6,}).*", "g");
+                if (false == enoughRegex.test($(this).val())) {
+                        $('#Mensaje').html('Incluye más caracteres.').css("color", "black");
+                } else if (strongRegex.test($(this).val())) {
+                        $('#Mensaje').className = 'ok';
+                        $('#Mensaje').html('¡Fuerte!').css("color", "green");
+                } else if (mediumRegex.test($(this).val())) {
+                        $('#Mensaje').className = 'alert';
+                        $('#Mensaje').html('¡Media!').css("color", "purple");
+                } else {
+                        $('#Mensaje').className = 'error';
+                        $('#Mensaje').html('¡Débil!').css("color", "red");
+                }
+                return true;
+        });
+        $('#RepeatNewPassword').keyup(function(e) {
+                var strongRegex = new RegExp("^(?=.{8,})(?=.*[A-Z])(?=.*[a-z])(?=.*[0-9])(?=.*\\W).*$", "g");
+                var mediumRegex = new RegExp("^(?=.{7,})(((?=.*[A-Z])(?=.*[a-z]))|((?=.*[A-Z])(?=.*[0-9]))|((?=.*[a-z])(?=.*[0-9]))).*$", "g");
+                var enoughRegex = new RegExp("(?=.{6,}).*", "g");
+                if (false == enoughRegex.test($(this).val())) {
+                        $('#Mensaje1').html('Incluye más caracteres.').css("color", "black");
+                } else if (strongRegex.test($(this).val())) {
+                        $('#Mensaje1').className = 'ok';
+                        $('#Mensaje1').html('¡Fuerte!').css("color", "green");
+                } else if (mediumRegex.test($(this).val())) {
+                        $('#Mensaje1').className = 'alert';
+                        $('#Mensaje1').html('¡Media!').css("color", "purple");
+                } else {
+                        $('#Mensaje1').className = 'error';
+                        $('#Mensaje1').html('¡Débil!').css("color", "red");
+                }
+                return true;
+        });
+</script>
