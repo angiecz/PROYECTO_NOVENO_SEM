@@ -1,12 +1,11 @@
 <?php
-if(isset($_SESSION['email'])){
-$email = $_SESSION['email'];
-$name = $_SESSION['nombre'];
+if (isset($_SESSION['email'])) {
+    $email = $_SESSION['email'];
+    $name = $_SESSION['nombre'];
+} else {
+    //header("Location: login.php");
 }
-else{
-  //header("Location: login.php");
-}
-if(isset($_GET['msg'])){
+if (isset($_GET['msg'])) {
     $msg = $_GET['msg'];
 }
 
@@ -34,8 +33,8 @@ if(isset($_GET['msg'])){
                     <h2 class="fs-title">Cambiar contraseña</h2>
                     <h3 class="fs-subtitle">Hola, para el cambio de tu contraseña es requerida la siguiente información
                     </h3>
-                    <input type="hidden" name="email" value='<?php echo $email;?>'>
-                    <input type="hidden" name="name" value='<?php echo $name;?>'>
+                    <input type="hidden" name="email" value='<?php echo $email; ?>'>
+                    <input type="hidden" name="name" value='<?php echo $name; ?>'>
                     <input type="hidden" name="action" value="ChangePassword">
                     <div class="password_flex">
                         <input type="password" name="OldPassword" placeholder="Digite su contraseña actual" id="OldPassword">
@@ -45,26 +44,26 @@ if(isset($_GET['msg'])){
                     </div>
                     <div class="password_flex">
                         <input type="password" name="NewPassword" placeholder="Digite su nueva contraseña" id="NewPassword">
-                        <button class= "Botonpassword" type="button" onclick="mostrarNewContrasena()">
+                        <button class="Botonpassword" type="button" onclick="mostrarNewContrasena()">
                             <ion-icon name="eye-outline" class="nav__logo" id="NewLogito"></ion-icon>
                         </button>
                     </div>
                     <div class="password_flex">
                         <input type="password" name="RepeatNewPassword" placeholder="Vuelva a digitar su nueva contraseña" id="RepeatNewPassword">
-                        <button class= "Botonpassword" type="button" onclick="mostrarRepeatNewContrasena()">
+                        <button class="Botonpassword" type="button" onclick="mostrarRepeatNewContrasena()">
                             <ion-icon name="eye-outline" class="nav__logo" id="RepeatNewLogito"></ion-icon>
                         </button>
                     </div>
                     <?php
-                        if(isset($msg) && $msg == 1){
-                            ?>
-                            <p class="Advertencia">La contraseña antigua no es igual</p>
-                            <?php
-                        }else if(isset($msg) && $msg == 2){
-                            ?>
-                            <p class="Advertencia">Las contraseñas son distintas</p>
-                            <?php
-                        }
+                    if (isset($msg) && $msg == 1) {
+                    ?>
+                        <p class="Advertencia">La contraseña antigua no es igual</p>
+                    <?php
+                    } else if (isset($msg) && $msg == 2) {
+                    ?>
+                        <p class="Advertencia">Las contraseñas son distintas</p>
+                    <?php
+                    }
                     ?>
                     <button type="submit" class="next action-button">Restablecer</button>
                 </fieldset>
@@ -72,40 +71,40 @@ if(isset($_GET['msg'])){
         </div>
     </div>
     <script>
-    function mostrarOldContrasena() {
-        var tipo = document.getElementById("OldPassword");
-        var icon = document.getElementById("OldLogito");
-        if (tipo.type == "password") {
-            tipo.type = "text";
-            icon.name = "eye-off-outline";
-        } else {
-            tipo.type = "password";
-            icon.name = "eye-outline";
+        function mostrarOldContrasena() {
+            var tipo = document.getElementById("OldPassword");
+            var icon = document.getElementById("OldLogito");
+            if (tipo.type == "password") {
+                tipo.type = "text";
+                icon.name = "eye-off-outline";
+            } else {
+                tipo.type = "password";
+                icon.name = "eye-outline";
+            }
         }
-    }
 
-    function mostrarNewContrasena() {
-        var tipo = document.getElementById("NewPassword");
-        var icon = document.getElementById("NewLogito");
-        if (tipo.type == "password") {
-            tipo.type = "text";
-            icon.name = "eye-off-outline";
-        } else {
-            tipo.type = "password";
-            icon.name = "eye-outline";
+        function mostrarNewContrasena() {
+            var tipo = document.getElementById("NewPassword");
+            var icon = document.getElementById("NewLogito");
+            if (tipo.type == "password") {
+                tipo.type = "text";
+                icon.name = "eye-off-outline";
+            } else {
+                tipo.type = "password";
+                icon.name = "eye-outline";
+            }
         }
-    }
 
-    function mostrarRepeatNewContrasena() {
-        var tipo = document.getElementById("RepeatNewPassword");
-        var icon = document.getElementById("RepeatNewLogito");
-        if (tipo.type == "password") {
-            tipo.type = "text";
-            icon.name = "eye-off-outline";
-        } else {
-            tipo.type = "password";
-            icon.name = "eye-outline";
+        function mostrarRepeatNewContrasena() {
+            var tipo = document.getElementById("RepeatNewPassword");
+            var icon = document.getElementById("RepeatNewLogito");
+            if (tipo.type == "password") {
+                tipo.type = "text";
+                icon.name = "eye-off-outline";
+            } else {
+                tipo.type = "password";
+                icon.name = "eye-outline";
+            }
         }
-    }
     </script>
 </body>

@@ -4,8 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <link href='https://fonts.googleapis.com/css?family=Roboto' rel='stylesheet' type='text/css'>
-    <meta name="viewport"
-        content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
     <link href="https://fonts.googleapis.com/css2?family=Lato&display=swap" rel="stylesheet">
     <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
@@ -277,226 +276,223 @@
         </div>
     </div>
     <script>
-    function Mostrar_resultado() {
+        function Mostrar_resultado() {
 
-        /**Solo agrego titulos para la respectiva revisión */
-        var titulo1 = document.getElementById('Revision1');
-        titulo1.textContent = "Aspectos a tener en cuenta";
-        var titulo2 = document.getElementById('Revision2');
-        titulo2.textContent = "Aspectos a tener en cuenta";
-        var titulo15 = document.getElementById('Revision15');
-        titulo15.textContent = "Aspectos a tener en cuenta";
-        var titulo3 = document.getElementById('Revision3');
-        titulo3.textContent = "Aspectos a tener en cuenta";
-        var titulo4 = document.getElementById('Revision4');
-        titulo4.textContent = "Aspectos a tener en cuenta";
-        var titulo5 = document.getElementById('Revision5');
-        titulo5.textContent = "Aspectos a tener en cuenta";
-        var titulo6 = document.getElementById('Revision6');
-        titulo6.textContent = "Aspectos a tener en cuenta";
-        var titulo7 = document.getElementById('Revision7');
-        titulo7.textContent = "Aspectos a tener en cuenta";
-        var titulo8 = document.getElementById('Revision8');
-        titulo8.textContent = "Aspectos a tener en cuenta";
-        var titulo9 = document.getElementById('Revision9');
-        titulo9.textContent = "Aspectos a tener en cuenta";
-        var titulo10 = document.getElementById('Revision10');
-        titulo10.textContent = "Aspectos a tener en cuenta";
-        var titulo11 = document.getElementById('Revision11');
-        titulo11.textContent = "Aspectos a tener en cuenta";
-        var titulo12 = document.getElementById('Revision12');
-        titulo12.textContent = "Aspectos a tener en cuenta";
-        var titulo13 = document.getElementById('Revision13');
-        titulo13.textContent = "Aspectos a tener en cuenta";
-        var titulo14 = document.getElementById('Revision14');
-        titulo14.textContent = "Aspectos a tener en cuenta";
+            /**Solo agrego titulos para la respectiva revisión */
+            var titulo1 = document.getElementById('Revision1');
+            titulo1.textContent = "Aspectos a tener en cuenta";
+            var titulo2 = document.getElementById('Revision2');
+            titulo2.textContent = "Aspectos a tener en cuenta";
+            var titulo15 = document.getElementById('Revision15');
+            titulo15.textContent = "Aspectos a tener en cuenta";
+            var titulo3 = document.getElementById('Revision3');
+            titulo3.textContent = "Aspectos a tener en cuenta";
+            var titulo4 = document.getElementById('Revision4');
+            titulo4.textContent = "Aspectos a tener en cuenta";
+            var titulo5 = document.getElementById('Revision5');
+            titulo5.textContent = "Aspectos a tener en cuenta";
+            var titulo6 = document.getElementById('Revision6');
+            titulo6.textContent = "Aspectos a tener en cuenta";
+            var titulo7 = document.getElementById('Revision7');
+            titulo7.textContent = "Aspectos a tener en cuenta";
+            var titulo8 = document.getElementById('Revision8');
+            titulo8.textContent = "Aspectos a tener en cuenta";
+            var titulo9 = document.getElementById('Revision9');
+            titulo9.textContent = "Aspectos a tener en cuenta";
+            var titulo10 = document.getElementById('Revision10');
+            titulo10.textContent = "Aspectos a tener en cuenta";
+            var titulo11 = document.getElementById('Revision11');
+            titulo11.textContent = "Aspectos a tener en cuenta";
+            var titulo12 = document.getElementById('Revision12');
+            titulo12.textContent = "Aspectos a tener en cuenta";
+            var titulo13 = document.getElementById('Revision13');
+            titulo13.textContent = "Aspectos a tener en cuenta";
+            var titulo14 = document.getElementById('Revision14');
+            titulo14.textContent = "Aspectos a tener en cuenta";
 
-        if (document.getElementById('Abrir').checked) {
-            var span = document.getElementById('Mensaje1');
-            span.textContent = "Debería de auditar su sistema";
-        }
-
-
-        if (document.getElementById('Parar').checked) {
-            var span = document.getElementById('Mensaje1');
-            span.textContent = "Refuerce este campo";
-        }
-        if (document.getElementById('Fechar').checked) {
-            var span = document.getElementById('Mensaje1');
-            span.textContent = "A pesar de que lo aplica, busque planes de mejora de auditoria";
-        }
-        if (document.getElementById('Abrir1').checked) {
-            var span = document.getElementById('Mensaje2');
-            span.textContent = "Es NECESARIO aplicar este tipo de planes";
-        }
-        if (document.getElementById('Parar1').checked) {
-            var span = document.getElementById('Mensaje2');
-            span.textContent = "Busque quien le genere una mejora de plan de acción";
-        }
-        if (document.getElementById('Fechar1').checked) {
-            var span = document.getElementById('Mensaje2');
-            span.textContent = "Perfecto";
-        }
-        if (document.getElementById('Abrir2').checked) {
-            var span = document.getElementById('Mensaje3');
-            span.textContent = "Es obligatorio aplicar el plan de parcheo";
-        }
-        if (document.getElementById('Parar2').checked) {
-            var span = document.getElementById('Mensaje3');
-            span.textContent = "Busque como mejorar este plan de parcheo";
-        }
-        if (document.getElementById('Fechar2').checked) {
-            var span = document.getElementById('Mensaje3');
-            span.textContent = "Plan de parcheo ok";
-        }
-        if (document.getElementById('Abrir3').checked) {
-            var span = document.getElementById('Mensaje4');
-            span.textContent = "Firewall NO";
-        }
-        if (document.getElementById('Parar3').checked) {
-            var span = document.getElementById('Mensaje4');
-            span.textContent = "Firewall Tal vez";
-        }
-        if (document.getElementById('Fechar3').checked) {
-            var span = document.getElementById('Mensaje4');
-            span.textContent = "Firewall Ok";
-        }
-        if (document.getElementById('Abrir4').checked) {
-            var span = document.getElementById('Mensaje5');
-            span.textContent = "Puntos de acceso no";
-        }
-        if (document.getElementById('Parar4').checked) {
-            var span = document.getElementById('Mensaje5');
-            span.textContent = "Puntos de acceso tal vez";
-        }
-        if (document.getElementById('Fechar4').checked) {
-            var span = document.getElementById('Mensaje5');
-            span.textContent = "Puntos de acceso ok";
-        }
-        if (document.getElementById('Abrir5').checked) {
-            var span = document.getElementById('Mensaje6');
-            span.textContent = "Servidor no";
-        }
-        if (document.getElementById('Parar5').checked) {
-            var span = document.getElementById('Mensaje6');
-            span.textContent = "Servidor tal vez";
-        }
-        if (document.getElementById('Fechar5').checked) {
-            var span = document.getElementById('Mensaje6');
-            span.textContent = "Servidor ok";
-        }
-        if (document.getElementById('Abrir6').checked) {
-            var span = document.getElementById('Mensaje7');
-            span.textContent = "Software no";
-        }
-        if (document.getElementById('Parar6').checked) {
-            var span = document.getElementById('Mensaje7');
-            span.textContent = "Software a veces";
-        }
-        if (document.getElementById('Fechar6').checked) {
-            var span = document.getElementById('Mensaje7');
-            span.textContent = "Software ok";
-        }
-        if (document.getElementById('Abrir7').checked) {
-            var span = document.getElementById('Mensaje8');
-            span.textContent = "Recursos no";
-        }
-        if (document.getElementById('Parar7').checked) {
-            var span = document.getElementById('Mensaje8');
-            span.textContent = "Recursos tal vez";
-        }
-        if (document.getElementById('Fechar7').checked) {
-            var span = document.getElementById('Mensaje8');
-            span.textContent = "Recursos ok";
-        }
-        if (document.getElementById('Abrir8').checked) {
-            var span = document.getElementById('Mensaje9');
-            span.textContent = "Archivos no";
-        }
-        if (document.getElementById('Parar8').checked) {
-            var span = document.getElementById('Mensaje9');
-            span.textContent = "Archivos tal vez";
-        }
-        if (document.getElementById('Fechar8').checked) {
-            var span = document.getElementById('Mensaje9');
-            span.textContent = "Archivos ok";
-        }
-        if (document.getElementById('Abrir9').checked) {
-            var span = document.getElementById('Mensaje10');
-            span.textContent = "BD NO";
-        }
-        if (document.getElementById('Parar9').checked) {
-            var span = document.getElementById('Mensaje10');
-            span.textContent = "BD tal vez";
-        }
-        if (document.getElementById('Fechar9').checked) {
-            var span = document.getElementById('Mensaje10');
-            span.textContent = "BD sí";
-        }
-        if (document.getElementById('Abrir10').checked) {
-            var span = document.getElementById('Mensaje11');
-            span.textContent = "Cifrado no";
-        }
-        if (document.getElementById('Parar10').checked) {
-            var span = document.getElementById('Mensaje11');
-            span.textContent = "Cifrado tal vez";
-        }
-        if (document.getElementById('Fechar10').checked) {
-            var span = document.getElementById('Mensaje11');
-            span.textContent = "Cifrado sí";
-        }
-        if (document.getElementById('Abrir11').checked) {
-            var span = document.getElementById('Mensaje12');
-            span.textContent = "Cuentas no";
-        }
-        if (document.getElementById('Parar11').checked) {
-            var span = document.getElementById('Mensaje12');
-            span.textContent = "Cuentas tal vez";
-        }
-        if (document.getElementById('Fechar11').checked) {
-            var span = document.getElementById('Mensaje12');
-            span.textContent = "Cuentas sí";
-        }
-        if (document.getElementById('Abrir12').checked) {
-            var span = document.getElementById('Mensaje13');
-            span.textContent = "Actualizacion no";
-        }
-        if (document.getElementById('Parar12').checked) {
-            var span = document.getElementById('Mensaje13');
-            span.textContent = "Actualizacion tal vez";
-        }
-        if (document.getElementById('Fechar12').checked) {
-            var span = document.getElementById('Mensaje13');
-            span.textContent = "Actualizacion si";
-        }
-        if (document.getElementById('Abrir13').checked) {
-            var span = document.getElementById('Mensaje14');
-            span.textContent = "Local no";
-        }
-        if (document.getElementById('Parar13').checked) {
-            var span = document.getElementById('Mensaje14');
-            span.textContent = "Local tal vez";
-        }
-        if (document.getElementById('Fechar13').checked) {
-            var span = document.getElementById('Mensaje14');
-            span.textContent = "Local si";
-        }
-        if (document.getElementById('Abrir14').checked) {
-            var span = document.getElementById('Mensaje15');
-            span.textContent = "Limpieza no";
-        }
-        if (document.getElementById('Parar14').checked) {
-            var span = document.getElementById('Mensaje15');
-            span.textContent = "Limpieza tal vez";
-        }
-        if (document.getElementById('Fechar14').checked) {
-            var span = document.getElementById('Mensaje15');
-            span.textContent = "Limpieza si";
-        }
+            if (document.getElementById('Abrir').checked) {
+                var span = document.getElementById('Mensaje1');
+                span.textContent = "Debería de auditar su sistema";
+            }
 
 
-
-    }
+            if (document.getElementById('Parar').checked) {
+                var span = document.getElementById('Mensaje1');
+                span.textContent = "Refuerce este campo";
+            }
+            if (document.getElementById('Fechar').checked) {
+                var span = document.getElementById('Mensaje1');
+                span.textContent = "A pesar de que lo aplica, busque planes de mejora de auditoria";
+            }
+            if (document.getElementById('Abrir1').checked) {
+                var span = document.getElementById('Mensaje2');
+                span.textContent = "Es NECESARIO aplicar este tipo de planes";
+            }
+            if (document.getElementById('Parar1').checked) {
+                var span = document.getElementById('Mensaje2');
+                span.textContent = "Busque quien le genere una mejora de plan de acción";
+            }
+            if (document.getElementById('Fechar1').checked) {
+                var span = document.getElementById('Mensaje2');
+                span.textContent = "Perfecto";
+            }
+            if (document.getElementById('Abrir2').checked) {
+                var span = document.getElementById('Mensaje3');
+                span.textContent = "Es obligatorio aplicar el plan de parcheo";
+            }
+            if (document.getElementById('Parar2').checked) {
+                var span = document.getElementById('Mensaje3');
+                span.textContent = "Busque como mejorar este plan de parcheo";
+            }
+            if (document.getElementById('Fechar2').checked) {
+                var span = document.getElementById('Mensaje3');
+                span.textContent = "Plan de parcheo ok";
+            }
+            if (document.getElementById('Abrir3').checked) {
+                var span = document.getElementById('Mensaje4');
+                span.textContent = "Firewall NO";
+            }
+            if (document.getElementById('Parar3').checked) {
+                var span = document.getElementById('Mensaje4');
+                span.textContent = "Firewall Tal vez";
+            }
+            if (document.getElementById('Fechar3').checked) {
+                var span = document.getElementById('Mensaje4');
+                span.textContent = "Firewall Ok";
+            }
+            if (document.getElementById('Abrir4').checked) {
+                var span = document.getElementById('Mensaje5');
+                span.textContent = "Puntos de acceso no";
+            }
+            if (document.getElementById('Parar4').checked) {
+                var span = document.getElementById('Mensaje5');
+                span.textContent = "Puntos de acceso tal vez";
+            }
+            if (document.getElementById('Fechar4').checked) {
+                var span = document.getElementById('Mensaje5');
+                span.textContent = "Puntos de acceso ok";
+            }
+            if (document.getElementById('Abrir5').checked) {
+                var span = document.getElementById('Mensaje6');
+                span.textContent = "Servidor no";
+            }
+            if (document.getElementById('Parar5').checked) {
+                var span = document.getElementById('Mensaje6');
+                span.textContent = "Servidor tal vez";
+            }
+            if (document.getElementById('Fechar5').checked) {
+                var span = document.getElementById('Mensaje6');
+                span.textContent = "Servidor ok";
+            }
+            if (document.getElementById('Abrir6').checked) {
+                var span = document.getElementById('Mensaje7');
+                span.textContent = "Software no";
+            }
+            if (document.getElementById('Parar6').checked) {
+                var span = document.getElementById('Mensaje7');
+                span.textContent = "Software a veces";
+            }
+            if (document.getElementById('Fechar6').checked) {
+                var span = document.getElementById('Mensaje7');
+                span.textContent = "Software ok";
+            }
+            if (document.getElementById('Abrir7').checked) {
+                var span = document.getElementById('Mensaje8');
+                span.textContent = "Recursos no";
+            }
+            if (document.getElementById('Parar7').checked) {
+                var span = document.getElementById('Mensaje8');
+                span.textContent = "Recursos tal vez";
+            }
+            if (document.getElementById('Fechar7').checked) {
+                var span = document.getElementById('Mensaje8');
+                span.textContent = "Recursos ok";
+            }
+            if (document.getElementById('Abrir8').checked) {
+                var span = document.getElementById('Mensaje9');
+                span.textContent = "Archivos no";
+            }
+            if (document.getElementById('Parar8').checked) {
+                var span = document.getElementById('Mensaje9');
+                span.textContent = "Archivos tal vez";
+            }
+            if (document.getElementById('Fechar8').checked) {
+                var span = document.getElementById('Mensaje9');
+                span.textContent = "Archivos ok";
+            }
+            if (document.getElementById('Abrir9').checked) {
+                var span = document.getElementById('Mensaje10');
+                span.textContent = "BD NO";
+            }
+            if (document.getElementById('Parar9').checked) {
+                var span = document.getElementById('Mensaje10');
+                span.textContent = "BD tal vez";
+            }
+            if (document.getElementById('Fechar9').checked) {
+                var span = document.getElementById('Mensaje10');
+                span.textContent = "BD sí";
+            }
+            if (document.getElementById('Abrir10').checked) {
+                var span = document.getElementById('Mensaje11');
+                span.textContent = "Cifrado no";
+            }
+            if (document.getElementById('Parar10').checked) {
+                var span = document.getElementById('Mensaje11');
+                span.textContent = "Cifrado tal vez";
+            }
+            if (document.getElementById('Fechar10').checked) {
+                var span = document.getElementById('Mensaje11');
+                span.textContent = "Cifrado sí";
+            }
+            if (document.getElementById('Abrir11').checked) {
+                var span = document.getElementById('Mensaje12');
+                span.textContent = "Cuentas no";
+            }
+            if (document.getElementById('Parar11').checked) {
+                var span = document.getElementById('Mensaje12');
+                span.textContent = "Cuentas tal vez";
+            }
+            if (document.getElementById('Fechar11').checked) {
+                var span = document.getElementById('Mensaje12');
+                span.textContent = "Cuentas sí";
+            }
+            if (document.getElementById('Abrir12').checked) {
+                var span = document.getElementById('Mensaje13');
+                span.textContent = "Actualizacion no";
+            }
+            if (document.getElementById('Parar12').checked) {
+                var span = document.getElementById('Mensaje13');
+                span.textContent = "Actualizacion tal vez";
+            }
+            if (document.getElementById('Fechar12').checked) {
+                var span = document.getElementById('Mensaje13');
+                span.textContent = "Actualizacion si";
+            }
+            if (document.getElementById('Abrir13').checked) {
+                var span = document.getElementById('Mensaje14');
+                span.textContent = "Local no";
+            }
+            if (document.getElementById('Parar13').checked) {
+                var span = document.getElementById('Mensaje14');
+                span.textContent = "Local tal vez";
+            }
+            if (document.getElementById('Fechar13').checked) {
+                var span = document.getElementById('Mensaje14');
+                span.textContent = "Local si";
+            }
+            if (document.getElementById('Abrir14').checked) {
+                var span = document.getElementById('Mensaje15');
+                span.textContent = "Limpieza no";
+            }
+            if (document.getElementById('Parar14').checked) {
+                var span = document.getElementById('Mensaje15');
+                span.textContent = "Limpieza tal vez";
+            }
+            if (document.getElementById('Fechar14').checked) {
+                var span = document.getElementById('Mensaje15');
+                span.textContent = "Limpieza si";
+            }
+        }
     </script>
 </body>
 

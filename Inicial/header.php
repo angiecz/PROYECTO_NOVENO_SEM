@@ -38,7 +38,7 @@ if (empty($_SESSION['rol'])) {
                     </a>
                     <a href="http://localhost/PROYECTO_NOVENO_SEM/Controlador/UsuarioControl.php?action=login"
                         class="nav__link">
-                        <ion-icon name="chatbubbles-outline" class="nav__icon"></ion-icon>
+                        <ion-icon name="enter-outline" class="nav__icon"></ion-icon>
                         <span class="nav__name">Login</span>
                     </a>
                     <?php
@@ -58,12 +58,12 @@ if (empty($_SESSION['rol'])) {
                         if ($_SESSION['rol'] == 'Usuario') { ?>
                     <a href="http://localhost/PROYECTO_NOVENO_SEM/Controlador/UsuarioControl.php?action=valorar"
                         class="nav__link">
-                        <ion-icon name="settings-outline" class="nav__icon"></ion-icon>
+                        <ion-icon name="clipboard-outline" class="nav__icon"></ion-icon>
                         <span class="nav__name">Hardening</span>
                     </a>
                     <a href="http://localhost/PROYECTO_NOVENO_SEM/Controlador/UsuarioControl.php?action=planeacion"
                         class="nav__link">
-                        <ion-icon name="settings-outline" class="nav__icon"></ion-icon>
+                        <ion-icon name="business-outline" class="nav__icon"></ion-icon>
                         <span class="nav__name">Planeación E</span>
                     </a>
                     <?php }
