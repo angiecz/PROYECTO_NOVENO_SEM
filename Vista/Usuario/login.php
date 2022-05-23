@@ -17,7 +17,7 @@ if (isset($_GET['count'])) {
     <link href="http://localhost/PROYECTO_NOVENO_SEM/CSS/Login.css" rel="stylesheet" type="text/css">
     <!-- ===== IONICONS ===== -->
     <script src="https://unpkg.com/ionicons@5.1.2/dist/ionicons.js"></script>
-    <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+
     <title>Inicio de sesión</title>
 </head>
 

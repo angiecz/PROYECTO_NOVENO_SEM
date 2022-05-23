@@ -10,18 +10,6 @@ class Password extends model_main
     protected $codigo;
     protected $fecha;
 
-    // protected function insertPassword()
-    // {
-    //     $ic = new Conexion();
-    //     $sql = "INSERT INTO usuarios(nombre_usuario,email,documento,contrasena,rol) VALUES (?,?,?,?,?)";
-    //     $insertar = $ic->db->prepare($sql);
-    //     $insertar->bindParam(1, $this->nombre);
-    //     $insertar->bindParam(2, $this->email);
-    //     $insertar->bindParam(3, $this->documento);
-    //     $insertar->bindParam(4, $this->contrasena);
-    //     $insertar->bindParam(5, $this->rol);
-    //     $insertar->execute();
-    // }
     protected function searchPasswordForToken($token, $email)
     {
         $ic = new Conexion();
