@@ -44,13 +44,12 @@ class UsuarioControl extends Usuario
 
     public function ValidarPermisos()
     {
-        if (isset($_SESSION['rol']) && $_SESSION['rol'] != 'Usuario') {
-
+        if(isset($_SESSION['rol']) && $_SESSION['rol'] != 'Usuario' && $_SESSION['rol'] != 'Administrador'){
             echo "<script>
-              alert('No tiene permisos en este módulo');
-              window.location= '../Inicial/header.php#'
-            </script>";
-        }
+            alert('No tiene permisos en este módulo');
+            window.location= '../Inicial/header.php#'
+        </script>";
+      }
         if (empty($_SESSION['rol'])) {
 
             echo "<script>
