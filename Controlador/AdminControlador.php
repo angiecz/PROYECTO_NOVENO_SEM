@@ -26,12 +26,13 @@ class AdminControlador extends Admin
     }
     public function InsertView()
     {
+        $rolesinformacion = $this->ConsultarRoles();
         require '../Vista/Admin/insertar.php';
     }
     
     public function ValidarPermisosAdmin()
     {
-        if(isset($_SESSION['rol']) && $_SESSION['rol']!='Admin'){
+        if(isset($_SESSION['rol']) && $_SESSION['rol']!='Administrador'){
    
             echo "<script>
               alert('No tiene permisos en este módulo');
@@ -49,6 +50,7 @@ class AdminControlador extends Admin
 
     public function VerifyLogin($nombre, $password, $postCount)
     {
+        $arrayPermisos = [];
         $this->nombre = $nombre;
         $this->password = $password;
         $usuarioinformacion = $this->BuscarUsuarioForName();
@@ -58,12 +60,21 @@ class AdminControlador extends Admin
             $_SESSION['nombre'] = $usuario->nombre_usuario;
             $_SESSION['email'] = $usuario->email;
             $_SESSION['rol'] = $usuario->rol;
+            $_SESSION['rol_id'] = $usuario->rol_id;
             $_SESSION['id'] = $usuario->id;
+            $this->usuario_id = $_SESSION['id'];
+            $this->rol_id = $_SESSION['rol_id'];
+            $usuariopermisos = $this->BuscarUsuarioPermisos();
+            foreach ($usuariopermisos as $permisos) {    
+                $arrayPermisos[] = $permisos->nombre;        
+            }
+            $_SESSION['Permisos'] = $arrayPermisos;
+
             $ip = $_SERVER['REMOTE_ADDR'];
             $user_agent = $_SERVER['HTTP_USER_AGENT'];
             $log_type = 1;
             $this->insert_log($usuario->id, $log_type, $ip, $user_agent);
-            if ($_SESSION['rol'] == 'Admin') {
+            if ($_SESSION['rol'] == 'Administrador') {
                 $this->RedireccionarRolAdmin();
             }
             if ($_SESSION['rol'] == 'Invitado') {
@@ -94,20 +105,32 @@ class AdminControlador extends Admin
     {
         require '../Vista/Admin/admin.php';
     }
-    public function SaveInfoForModel($nombre,$email,$documento,$contrasena,$rol) {
+    public function SaveInfoForModel($nombre,$email,$documento,$contrasena) {
         $this->nombre =$nombre; 
         $this->email =$email; 
         $this->documento =$documento; 
-        $this->contrasena =$contrasena; 
-        $this->rol =$rol; 
+        $this->contrasena =$contrasena;
+        $id_user = $this->InsertUsuario();
+        //$this->rol =$rol; 
         $this->InsertUsuario();
         $ip = $_SERVER['REMOTE_ADDR'];
         $user_agent = $_SERVER['HTTP_USER_AGENT'];
         $log_type = 2;
         $this->insert_log( $_SESSION['id'], $log_type, $ip, $user_agent);
+        echo "<script>console.log('despues de insert: " .$id_user."' );</script>";
+        return $id_user;
+        
+        
     }
-}
-if (isset($_SESSION['rol']) && $_SESSION['rol'] != 'Admin') {
+    public function SaveRolYPermisos($rol, $id, $permiso) {
+        echo "<script>console.log('dentro del save: " .$id."' );</script>";
+            $this->id = $id;
+            $this->rol = $rol;
+            $this->permiso = $permiso;
+            $this->InsertRolYPermisos();
+        }
+    }
+if (isset($_SESSION['rol']) && $_SESSION['rol'] != 'Administrador') {
 
     echo "<script>
       alert('No tiene permisos en este módulo');
@@ -142,15 +165,17 @@ if (isset($_POST['action']) && $_POST['action'] == 'insert') {
     $password = password_hash($_POST['contrasena'], PASSWORD_BCRYPT);
     //$password= sha1($_POST['contrasena']); //REQUERIMIENTO 3
 
-    $instanciacontrolador->SaveInfoForModel(
+    $id = $instanciacontrolador->SaveInfoForModel(
         $_POST['nombre'],
         $_POST['email'],
         $_POST['documento'],
         $password,
-        $_POST['rol'],
-        
-        
     );
+    echo "<script>console.log('antes de save: " .$id."' );</script>";
+    foreach( $_POST['Permisos'] as $permisos){
+        $instanciacontrolador->SaveRolYPermisos($_POST['rol'], $id, $permisos);
+    }
+    
     echo "<script>
             alert('Usuario Registrado');
             window.location= '../Inicial/header.php'

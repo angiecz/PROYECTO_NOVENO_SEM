@@ -203,3 +203,43 @@ body {
     background: #C5C5F1;
     text-decoration: none;
 }
+
+input[type = checkbox] {
+    display: none !important;
+}
+
+input[type = checkbox] + label {
+    cursor: pointer;
+}
+
+.LabelCheck:before{
+    content: '';
+    background: transparent;
+    border: 1px solid #054581;
+    border-radius: 5px;
+    display: inline-block;
+    height: 20px;
+    margin-right: 5px;
+    text-align: center;
+    vertical-align: middle;
+    text-shadow: 1px -1px 1px #01182e;
+    width: 20px;
+}
+
+input[type = checkbox]:checked + label::before{
+    content: '✓';
+    font-size: 15px;
+    color: #054581;
+    font-family: 'Times New Roman';
+}
+
+.div_permisos{
+    margin-top: 10px;
+    width: 80%;
+    text-align: left;
+    margin: auto;
+}
+
+.div_permisos p{
+    margin-top: 3px;
+}
