@@ -23,7 +23,6 @@ if (empty($_SESSION['rol'])) {
 </head>
 
 <body id="body-pd">
-
     <div class="l-navbar" id="navbar">
         <nav class="nav">
             <div>
@@ -43,30 +42,68 @@ if (empty($_SESSION['rol'])) {
                     </a>
                     <?php
                     try {
-                        if ($_SESSION['rol'] == 'Admin') { ?>
+                        if ($_SESSION['rol'] == 'Administrador') {
+                            $permitir_registrar = false;
+                            foreach ($_SESSION['Permisos'] as $permisos) {
+                                if($permisos == 'Registrar usuarios'){
+                                    $permitir_registrar = true;
+                                    echo "<script>console.log('Tiene permiso de registrar' );</script>";
+                                }
+                            }
+                            if($permitir_registrar == true){
+                            ?>
                     <a href="http://localhost/PROYECTO_NOVENO_SEM/Controlador/AdminControlador.php?action=insert"
                         class="nav__link">
                         <ion-icon name="settings-outline" class="nav__icon"></ion-icon>
                         <span class="nav__name">Registrar usuario</span>
                     </a>
-
-                    <?php }
+                    <?php 
+                            }
+                        }
                     } catch (Exception $e) {
                     } ?>
-                    <?php
+
+<?php
                     try {
-                        if ($_SESSION['rol'] == 'Usuario') { ?>
+                        if ($_SESSION['rol'] == 'Administrador' || $_SESSION['rol'] == 'Usuario') {
+                            $permitir_registrar = false;
+                            foreach ($_SESSION['Permisos'] as $permisos) {
+                                if($permisos == 'Registrar usuarios'){
+                                    $permitir_registrar = true;
+                                    echo "<script>console.log('Tiene permiso de hardening' );</script>";
+                                }
+                            }
+                            if($permitir_registrar == true){
+                            ?>
                     <a href="http://localhost/PROYECTO_NOVENO_SEM/Controlador/UsuarioControl.php?action=valorar"
                         class="nav__link">
                         <ion-icon name="clipboard-outline" class="nav__icon"></ion-icon>
                         <span class="nav__name">Hardening</span>
                     </a>
+                    <?php 
+                            }
+                        }
+                    } catch (Exception $e) {
+                    } ?>
+                    <?php
+                    try {
+                        if ($_SESSION['rol'] == 'Usuario' || $_SESSION['rol'] == 'Administrador') { 
+                            $permitir_planeacion = false;
+                            foreach ($_SESSION['Permisos'] as $permisos) {
+                                if($permisos == 'Planeacion'){
+                                    $permitir_planeacion = true;
+                                    echo "<script>console.log('Tiene permiso de planear' );</script>";
+                                }
+                            }
+                            if($permitir_planeacion == true){
+                            ?>
                     <a href="http://localhost/PROYECTO_NOVENO_SEM/Controlador/UsuarioControl.php?action=planeacion"
                         class="nav__link">
                         <ion-icon name="business-outline" class="nav__icon"></ion-icon>
                         <span class="nav__name">Planeación E</span>
                     </a>
                     <?php }
+                    }
                     } catch (Exception $e) {
                     } ?>
 
