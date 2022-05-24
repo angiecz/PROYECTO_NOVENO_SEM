@@ -32,7 +32,7 @@ class AdminControlador extends Admin
     
     public function ValidarPermisosAdmin()
     {
-        if(isset($_SESSION['rol']) && $_SESSION['rol']!='Administrador'){
+        if(isset($_SESSION['rol']) && $_SESSION['rol'] != 'Administrador'){
    
             echo "<script>
               alert('No tiene permisos en este módulo');
