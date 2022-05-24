@@ -1,6 +1,5 @@
 <?php
 require '../Modelo/Usuario.php';
-
 require 'InicioControlador.php';
 
 use PHPMailer\PHPMailer\PHPMailer;
@@ -143,13 +142,14 @@ class UsuarioControl extends Usuario
         $email = $_GET['emaila'];
         $token = $_GET['token'];
         $codigo = $_GET['codigo'];
-        $ic = new Conexion();
-        $sql = "SELECT id FROM passwords WHERE emaila ='$email' and token ='$token' and codigo = '$codigo'";
-        $consulta = $ic->db->prepare($sql);
-        $consulta->execute();
-        $objetoc = $consulta->fetch(PDO::FETCH_ASSOC);
-        // echo "<script>console.log('Console: " .var_dump(count($info))."' );</script>";
-        if ($objetoc > 0) {
+        $Passwords = $this->searchPasswordForToken($token, $email, $codigo);
+        // $ic = new Conexion();
+        // $sql = "SELECT id FROM passwords WHERE emaila ='$email' and token ='$token' and codigo = '$codigo'";
+        // $consulta = $ic->db->prepare($sql);
+        // $consulta->execute();
+        // $objetoc = $consulta->fetch(PDO::FETCH_ASSOC);
+        //echo "<script>console.log('Console: " .var_dump(count($Passwords))."' );</script>";
+        if (count($Passwords) > 0) {
             require '../Vista/Usuario/nuevo.php';
         } else {
             echo "<script>
@@ -168,7 +168,9 @@ class UsuarioControl extends Usuario
         if ($nuevacontra == $confirmar) {
             $nuevacontra = password_hash($confirmar, PASSWORD_BCRYPT);
             $ic = new Conexion();
+            $instanciacontrolador = new UsuarioControl();
             $sql = "UPDATE usuarios SET contrasena='$nuevacontra' WHERE email='$email'";
+            
             $consulta = $ic->db->prepare($sql);
             $consulta->execute();
             //Log Contraseña externa

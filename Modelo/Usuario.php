@@ -1,7 +1,8 @@
 <?php
 
 require '../libs/model_main.php';
-class Usuario extends model_main{
+class Usuario extends model_main
+{
   /*  protected $id;
     protected $nombre;
     protected $email;
@@ -23,7 +24,7 @@ class Usuario extends model_main{
        // $insertar->bindParam(7,$this->foto_url);
         $insertar->execute();
     }*/
-    /*protected function BuscarUsuarioForName(){
+  /*protected function BuscarUsuarioForName(){
         $ic=new Conexion();
         $sql="SELECT * FROM usuarios WHERE nombre_usuario='$this->nombre'";
         $consulta=$ic->db->prepare($sql);
@@ -31,16 +32,24 @@ class Usuario extends model_main{
         $objetoconsulta=$consulta->fetchAll(PDO::FETCH_OBJ);
         return $objetoconsulta;
 }*/
-protected function BuscarUsuarioForName($email){
-  $ic=new Conexion();
-  $sql="SELECT * FROM usuarios WHERE email = '$email'";
-  $consulta=$ic->db->prepare($sql);
-  $consulta->execute();
-  $objetoconsulta=$consulta->fetchAll(PDO::FETCH_OBJ);
- 
-  return $objetoconsulta;
-  
-}
+  protected function BuscarUsuarioForName($email)
+  {
+    $ic = new Conexion();
+    $sql = "SELECT * FROM usuarios WHERE email = '$email'";
+    $consulta = $ic->db->prepare($sql);
+    $consulta->execute();
+    $objetoconsulta = $consulta->fetchAll(PDO::FETCH_OBJ);
 
+    return $objetoconsulta;
+  }
+  protected function searchPasswordForToken($token, $email, $codigo)
+  {
+    $ic = new Conexion();
+    $sql = "SELECT id FROM passwords WHERE emaila ='$email' and token ='$token' and codigo = '$codigo'";
+    $consulta = $ic->db->prepare($sql);
+    $consulta->execute();
+    $objetoconsulta = $consulta->fetchAll(PDO::FETCH_OBJ);
 
+    return $objetoconsulta;
+  }
 }
