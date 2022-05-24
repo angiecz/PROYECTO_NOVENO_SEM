@@ -35,11 +35,6 @@ if (empty($_SESSION['rol'])) {
                         <ion-icon name="home-outline" class="nav__icon"></ion-icon>
                         <span class="nav__name">Inicio</span>
                     </a>
-                    <a href="http://localhost/PROYECTO_NOVENO_SEM/Controlador/UsuarioControl.php?action=login"
-                        class="nav__link">
-                        <ion-icon name="enter-outline" class="nav__icon"></ion-icon>
-                        <span class="nav__name">Login</span>
-                    </a>
                     <?php
                     try {
                         if ($_SESSION['rol'] == 'Administrador') {
@@ -63,7 +58,7 @@ if (empty($_SESSION['rol'])) {
                     } catch (Exception $e) {
                     } ?>
 
-<?php
+                    <?php
                     try {
                         if ($_SESSION['rol'] == 'Administrador' || $_SESSION['rol'] == 'Usuario') {
                             $permitir_registrar = false;
