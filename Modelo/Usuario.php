@@ -1,6 +1,7 @@
 <?php
-require '../Config/Conexion.php';
-class Usuario{
+
+require '../libs/model_main.php';
+class Usuario extends model_main{
   /*  protected $id;
     protected $nombre;
     protected $email;
@@ -30,5 +31,16 @@ class Usuario{
         $objetoconsulta=$consulta->fetchAll(PDO::FETCH_OBJ);
         return $objetoconsulta;
 }*/
+protected function BuscarUsuarioForName($email){
+  $ic=new Conexion();
+  $sql="SELECT * FROM usuarios WHERE email = '$email'";
+  $consulta=$ic->db->prepare($sql);
+  $consulta->execute();
+  $objetoconsulta=$consulta->fetchAll(PDO::FETCH_OBJ);
+ 
+  return $objetoconsulta;
+  
 }
-?>
+
+
+}
