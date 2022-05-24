@@ -1177,6 +1177,83 @@
         background: #08ad15;
         border-radius: 2px;
         color: #fff; }
+
+        /*#Pregunta16*/
+      .pregunta16{
+          text-align: left;
+      }
+      .pregunta16 h2 {
+      font-size: 18px;
+      color: #001F3F;
+      margin-bottom: 5px;
+      margin-left: 5px; }
+      .pregunta16 h3 {
+      font-size: 16px;
+      color: #1d1f21;
+      margin-bottom: 20px;
+      margin-left: 20px; }
+      .pregunta16 h4 {
+        font-size: 16px;
+        color: #06651a;
+        margin-bottom: 10px;
+        margin-left: 5px; }
+     .pregunta16 > div {
+      padding: 20px 0;
+      border-bottom: 1px solid #ccc; }
+     .pregunta16 .radio label {
+      display: inline-block;
+      cursor: pointer;
+      color: #161514;
+      position: relative;
+      padding: 5px 15px 5px 51px;
+      font-size: 1em;
+      border-radius: 5px;
+      -webkit-transition: all 0.3s ease;
+      -o-transition: all 0.3s ease;
+      transition: all 0.3s ease; }
+      .pregunta16 .radio label:hover {
+       background: rgba(255, 65, 54, 0.1); }
+      .pregunta16 .radio label:before {
+      content: "";
+      display: inline-block;
+      width: 17px;
+      height: 17px;
+      position: absolute;
+      left: 15px;
+      border-radius: 50%;
+      background: none;
+      border: 3px solid #020212; }
+     .pregunta16 input[type="radio"][id="Abrir15"] {
+      display: none; }
+      .pregunta16 input[id="Abrir15"][type="radio"]:checked + label:before {
+      display: none; }
+      .pregunta16 input[id="Abrir15"][type="radio"]:checked + label {
+      padding: 5px 15px;
+      background: #530603;
+      border-radius: 2px;
+      color: #fff; }
+
+      .pregunta16 input[id="Parar15"][type="radio"] {
+      display: none; }
+      .pregunta16 input[id="Parar15"][type="radio"]:checked + label:before {
+      display: none; }
+      .pregunta16 input[id="Parar15"][type="radio"]:checked + label {
+      padding: 5px 15px;
+      background: #600968;
+      border-radius: 2px;
+      color: #fff; }
+
+      .pregunta16 input[id="Fechar15"][type="radio"] {
+      display: none; }
+      .pregunta16 input[id="Fechar15"][type="radio"]:checked + label:before {
+      display: none; }
+      .pregunta16 input[id="Fechar15"][type="radio"]:checked + label {
+      padding: 5px 15px;
+      background: #08ad15;
+      border-radius: 2px;
+      color: #fff; }
+
+
         /*Boton de envío*/
         .frame {
             width: 90%;
