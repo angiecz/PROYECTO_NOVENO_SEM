@@ -91,13 +91,17 @@ class AdminControlador extends Admin
                     $log_type = 3;
                     $this->insert_log($usuario->id, $log_type, $ip, $user_agent);
                     echo "<script>
-                    alert('Credenciales incorrectas, vuelva a intentarlo.'); 
+                    alert('Credenciales incorrectas, vuelva a intentarlo.');
+                    window.location= 'UsuarioControl.php?action=login' 
                     </script>";
-                }
+                }else{
                 echo "<script>
                     alert('Credenciales incorrectas, vuelva a intentarlo.');
                     window.location= 'UsuarioControl.php?action=login&count=$postCount'
                 </script>";
+                    
+                }
+              
             }
         }
     }

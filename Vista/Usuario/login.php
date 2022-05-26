@@ -3,7 +3,7 @@
 
 <?php
 if (isset($_GET['count'])) {
-  $count = $_GET['count'];
+    $count = $_GET['count'];
 }
 ?>
 <!DOCTYPE html>
@@ -45,6 +45,10 @@ if (isset($_GET['count'])) {
                     <div class="form-group">
                         <input type="hidden" name="action" value="login">
                         <input type="text" name="nombre" placeholder="Nombre de tu usuario" required>
+                        <?php
+                        if (isset($count)) {
+                        ?><input type="hidden" name="count" value="<?php echo $count ?>">
+                        <?php } ?>
                         <label for="Email"></label>
                     </div>
                     <div class="password_flex">

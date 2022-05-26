@@ -131,7 +131,7 @@ class UsuarioControl extends Usuario
             }
         } else {
             echo "<script>
-                alert('Correo de usuario incorrecto.');
+                alert('Correo de usuario Inexistente.');
                 window.location= 'UsuarioControl.php?action=olvidar'
             </script>";
         }
