@@ -63,7 +63,7 @@ if (empty($_SESSION['rol'])) {
                         if ($_SESSION['rol'] == 'Administrador' || $_SESSION['rol'] == 'Usuario') {
                             $permitir_registrar = false;
                             foreach ($_SESSION['Permisos'] as $permisos) {
-                                if($permisos == 'Registrar usuarios'){
+                                if($permisos == 'Hardening'){
                                     $permitir_registrar = true;
                                     echo "<script>console.log('Tiene permiso de hardening' );</script>";
                                 }

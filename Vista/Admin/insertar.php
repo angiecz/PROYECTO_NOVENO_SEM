@@ -60,10 +60,10 @@
                     <input type="checkbox" id="cbox1" value="1" name="Permisos[]"> <label class="LabelCheck" for="cbox1" id="labcbox1">Registrar usuarios</label>
                     </p>
                     <p>
-                    <input type="checkbox" id="cbox2" value="2" name="Permisos[]"> <label class="LabelCheck" for="cbox2" id="labcbox2">Formulario Hardening</label>
+                    <input type="checkbox" id="cbox2" value="3" name="Permisos[]"> <label class="LabelCheck" for="cbox2" id="labcbox2">Formulario Hardening</label>
                     </p>
                     <p>
-                    <input type="checkbox" id="cbox3" value="3" name="Permisos[]"> <label class="LabelCheck" for="cbox3" id="labcbox3">Planeación Estrategica</label>
+                    <input type="checkbox" id="cbox3" value="2" name="Permisos[]"> <label class="LabelCheck" for="cbox3" id="labcbox3">Planeación Estrategica</label>
                     </p>
                 </div>
                 <input type="submit" class="next action-button" id="boton1" value="Registrar">
