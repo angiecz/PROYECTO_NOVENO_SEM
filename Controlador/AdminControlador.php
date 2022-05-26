@@ -91,29 +91,13 @@ class AdminControlador extends Admin
                     $log_type = 3;
                     $this->insert_log($usuario->id, $log_type, $ip, $user_agent);
                     echo "<script>
-                    setTimeout(popUp, 1000);
-                    
-                    function popUp() {
-                        swal('Good job!', 'You clicked the button!', 'success');
-                    }
+                    alert('Credenciales incorrectas, vuelva a intentarlo.'); 
                     </script>";
-                    echo "<script>
-                    alert('Credenciales incorrectas, vuelva a intentarlo.');
-                   
-                </script>";
                 }
                 echo "<script>
-                <script src='https://unpkg.com/sweetalert/dist/sweetalert.min.js'></script>
-                setTimeout(popUp, 1000);
-                
-                function popUp() {
-                    swal('Good job!', 'You clicked the button!', 'success');
-                }
+                    alert('Credenciales incorrectas, vuelva a intentarlo.');
+                    window.location= 'UsuarioControl.php?action=login&count=$postCount'
                 </script>";
-                // echo "<script>
-                //     alert('Credenciales incorrectas, vuelva a intentarlo.');
-                //     window.location= 'UsuarioControl.php?action=login&count=$postCount'
-                // </script>";
             }
         }
     }
@@ -181,7 +165,6 @@ if (isset($_POST['action']) && $_POST['action'] == 'insert') {
     //Se encripta la contraseña
     $instanciacontrolador = new AdminControlador();
     $password = password_hash($_POST['contrasena'], PASSWORD_BCRYPT);
-    //$password= sha1($_POST['contrasena']); //REQUERIMIENTO 3
 
     $id = $instanciacontrolador->SaveInfoForModel(
         $_POST['nombre'],
