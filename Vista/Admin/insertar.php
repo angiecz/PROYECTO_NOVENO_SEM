@@ -11,6 +11,8 @@
     <script src="forte.js"></script>
     <!-- ===== CSS ===== -->
     <link rel="stylesheet" href="../CSS/Insert.css">
+        <!-- ===== IONICONS ===== -->
+        <script src="https://unpkg.com/ionicons@5.1.2/dist/ionicons.js"></script>
     <title>Registro Personal</title>
 </head>
 <div class="row">
@@ -34,7 +36,13 @@
                 <input type="number" class="form-control" name="documento" placeholder="Identidad" required>
                 <br> <label for="contrasena" class="fs-subtitle">Contraseña:</label> </br>
                 <span class="fs-subtitle1" id="Mensaje">Aquí mostraremos la fortaleza generada por tu contraseña</span>
-                <input type="password" id="contrasena" class="form-control" name="contrasena" placeholder="Contraseña" required>
+                <div class="password_flex">
+                    <input type="password" id="contrasena" class="input_contrasena" name="contrasena" placeholder="Contraseña" required>
+                    <label for="password"></label>
+                    <button class="Botonpassword" type="button" onclick="mostrarPassword()">
+                        <ion-icon name="eye-outline" class="nav__logo" id="PasswordLogito"></ion-icon>
+                    </button>
+                </div>
                 <fieldset>
                     <h2 class="fs-title">Acceso a reconocer</h2>
                     <label for="rol" class="fs-subtitle">Rol:</label>
@@ -103,6 +111,17 @@
 
         }
     }
+    function mostrarPassword() {
+                    var tipo = document.getElementById("contrasena");
+                    var icon = document.getElementById("PasswordLogito");
+                    if (tipo.type == "password") {
+                        tipo.type = "text";
+                        icon.name = "eye-off-outline";
+                    } else {
+                        tipo.type = "password";
+                        icon.name = "eye-outline";
+                    }
+                }
 </script>
 <script>
 
