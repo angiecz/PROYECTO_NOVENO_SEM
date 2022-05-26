@@ -114,7 +114,6 @@ class AdminControlador extends Admin
         $this->contrasena = $contrasena;
         $id_user = $this->InsertUsuario();
         //$this->rol =$rol; 
-        $this->InsertUsuario();
         //Log Created user new
         $ip = $_SERVER['REMOTE_ADDR'];
         $user_agent = $_SERVER['HTTP_USER_AGENT'];
